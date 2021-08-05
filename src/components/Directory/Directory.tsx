@@ -3,7 +3,7 @@ import GirlImage from '../../assets/img/girl-in-city.jpg';
 import MenImage from '../../assets/img/men-in-city.jpg';
 import Button from '../UI/Button/Button';
 
-const Directory: FC = ({}) => {
+const Directory: FC = () => {
   return (
     <div className="directory">
       <div className="directory__column directory__column--girl">

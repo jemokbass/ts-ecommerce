@@ -1,14 +1,15 @@
 import { FC } from 'react';
-import HomePage from '../../pages/HomePage/HomePage';
+
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
+import Routes from './routes';
 
-const App: FC = ({}) => {
+const App: FC = () => {
   return (
     <div className="app">
       <Header />
       <main className="main">
-        <HomePage />
+        <Routes />
       </main>
       <Footer />
     </div>

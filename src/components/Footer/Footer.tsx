@@ -1,7 +1,14 @@
 import { FC } from 'react';
 
-const Footer: FC = ({}) => {
-  return <footer className="footer">Not copy</footer>;
+const Footer: FC = () => {
+  return (
+    <footer className="footer">
+      <p>
+        <a href="https://instagram.com/jkakhovtsev">@Jemokbass</a>
+      </p>
+      <blockquote>Please, don't copy this app 😉</blockquote>
+    </footer>
+  );
 };
 
 export default Footer;
