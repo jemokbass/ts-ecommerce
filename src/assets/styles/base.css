@@ -1,0 +1,15 @@
+@import './fonts';
+@import './vars';
+@import './main';
+
+/*COMPONENTS*/
+@import '../../components/Header/Header';
+@import '../../components/Footer/Footer';
+@import '../../components/Logo/Logo';
+@import '../../components/Directory/Directory';
+
+/*UI*/
+@import '../../components/UI/Button/Button';
+
+/*PAGES*/
+@import '../../pages/HomePage/HomePage';

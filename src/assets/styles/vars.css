@@ -1,0 +1,14 @@
+#root {
+  --main-size: 16px;
+  --font: 'Baloo', sans-serif;
+  --black: #000000;
+  --white: #ffffff;
+  --current-color: #32134d;
+  --yellow-color: #ab850e;
+  --green-color: #0a4918;
+  --gray-color: #f0f0f0;
+  --current-color-rgb: 50, 19, 77;
+  --yellow-color-rgb: 171, 133, 14;
+  --green-color-rgb: 10, 73, 24;
+  --gray-color-rgb: 240, 240, 240;
+}
