@@ -49,4 +49,13 @@
   transform: translate(-50%, -50%);
   z-index: 1;
   margin: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease 0s;
+}
+
+.directory__column--girl:hover .button,
+.directory__column--men:hover .button {
+  opacity: 1;
+  visibility: visible;
 }

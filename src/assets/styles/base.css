@@ -8,10 +8,12 @@
 @import '../../components/Logo/Logo';
 @import '../../components/Directory/Directory';
 @import '../../components/Navigation/Navigation';
+@import '../../components/UI/Inner/Inner';
 
 /*UI*/
 @import '../../components/UI/Button/Button';
 
 /*PAGES*/
 @import '../../pages/HomePage/HomePage';
-@import '../../pages/SignUpPage/SignUpPage';
+@import '../../pages/RegistrationPage/RegistrationPage';
+@import '../../pages/LoginPage/LoginPage';

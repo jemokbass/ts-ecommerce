@@ -6,7 +6,8 @@ const Routes: FC = () => {
   const routes = (
     <>
       <Route exact path="/" component={lazyRoutes.HomePage} />
-      <Route exact path="/sign-up" component={lazyRoutes.SignUpPage} />
+      <Route exact path="/registration" component={lazyRoutes.SignUpPage} />
+      <Route exact path="/login" component={lazyRoutes.LoginPage} />
     </>
   );
 

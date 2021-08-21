@@ -1,0 +1,7 @@
+.inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  background: var(--white);
+  box-shadow: 2px 2px 5px var(--black);
+}

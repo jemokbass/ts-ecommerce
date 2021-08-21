@@ -10,14 +10,15 @@ interface ILinks {
 const Navigation: FC = () => {
   const links: ILinks[] = [
     { path: '/', exact: true, title: 'Homepage' },
-    { path: '/sign-up', exact: true, title: 'Registration' },
+    { path: '/registration', exact: false, title: 'Registration' },
+    { path: '/login', exact: false, title: 'Login' },
   ];
 
   return (
     <nav className="navigation">
       <ul className="navigation__list">
         {links.map(({ exact, path, title }) => (
-          <li className="navigation__list-item">
+          <li className="navigation__list-item" key={title}>
             <NavLink to={path} exact={exact}>
               {title}
             </NavLink>
