@@ -1,7 +1,7 @@
 import { FC, FormEvent } from 'react';
 import Button from '../../components/UI/Button/Button';
 import Inner from '../../components/UI/Inner/Inner';
-import { signInWithGoogle } from '../../firebase/utils';
+import { signInWithGoogle } from '../../utils/firebase/utils';
 
 const LoginPage: FC = () => {
   const onSubmitForm = async (event: FormEvent) => {

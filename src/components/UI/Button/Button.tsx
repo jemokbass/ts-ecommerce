@@ -1,5 +1,4 @@
 import { FC } from 'react';
-
 interface IButtonProps {
   type?: 'button' | 'reset' | 'submit';
   className?: string;
