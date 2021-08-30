@@ -2,7 +2,7 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 import { firebaseConfig } from "./config";
-import { IAuthState } from "../types/auth";
+import { ICurrentUser } from "../types/auth";
 
 firebase.initializeApp(firebaseConfig);
 
@@ -14,7 +14,7 @@ GoogleProvider.setCustomParameters({ prompt: "select_account" });
 export const signInWithGoogle = () => auth.signInWithPopup(GoogleProvider);
 
 export const handleUserProfile = async (
-  userAuth: any,
+  userAuth: ICurrentUser,
   additionalData?: any
 ) => {
   if (!userAuth) return;

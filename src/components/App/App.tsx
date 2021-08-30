@@ -16,7 +16,7 @@ const App: FC = () => {
   let authListener: any = null;
 
   useEffect(() => {
-    authListener = auth.onAuthStateChanged(async userAuth => {
+    authListener = auth.onAuthStateChanged(async (userAuth: any) => {
       if (userAuth) {
         const userRef = await handleUserProfile(userAuth);
         userRef?.onSnapshot(snapshot => {

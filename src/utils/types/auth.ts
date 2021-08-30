@@ -1,5 +1,10 @@
+export interface ICurrentUser {
+  uid: string;
+  displayName: string;
+  email: string;
+}
 export interface IAuthState {
-  currentUser: null | any;
+  currentUser: null | ICurrentUser;
 }
 
 export enum AuthActionTypes {

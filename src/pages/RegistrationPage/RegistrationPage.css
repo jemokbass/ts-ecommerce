@@ -4,6 +4,7 @@
 }
 
 .registration-page__title {
+  margin: 0 0 30px;
   text-align: center;
   font-size: 26px;
   font-weight: 800;
