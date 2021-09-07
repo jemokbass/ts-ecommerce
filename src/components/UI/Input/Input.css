@@ -1,0 +1,28 @@
+.input {
+  display: block;
+  max-width: 50%;
+  margin: 0 auto 30px;
+  cursor: pointer;
+}
+
+.input span {
+  display: block;
+  margin: 0 0 5px;
+  transform: translate(0, 100%);
+  transition: all 0.2s ease-in 0s;
+}
+
+.input input {
+  display: block;
+  width: 100%;
+  padding: 2px 2px 3px;
+  border-bottom: 1px solid var(--current-color);
+}
+
+.input.active span {
+  transform: translate(0);
+}
+
+.input.active input {
+  border-bottom: 1px solid var(--success-color);
+}

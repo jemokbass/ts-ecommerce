@@ -14,6 +14,7 @@
 /*UI*/
 @import '../../components/UI/Button/Button';
 @import '../../components/UI/Inner/Inner';
+@import '../../components/UI/Input/Input';
 
 /*PAGES*/
 @import '../../pages/HomePage/HomePage';

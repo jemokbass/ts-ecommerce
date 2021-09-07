@@ -73,7 +73,9 @@ blockquote {
 input,
 button,
 textarea,
-a {
+a,
+label {
+  outline: none;
   cursor: pointer;
 }
 
