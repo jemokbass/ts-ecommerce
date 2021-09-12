@@ -1,7 +1,8 @@
 export interface ICurrentUser {
-  uid: string;
-  displayName: string;
-  email: string;
+  uid?: string | null;
+  displayName?: string | null;
+  email?: string | null;
+  password?: string | null;
 }
 export interface IAuthState {
   currentUser: null | ICurrentUser;
@@ -12,6 +13,12 @@ export interface IRegistrationFields {
   email: string;
   password: string;
   confirmPassword: string;
+  errors: string[];
+}
+
+export interface ILoginFields {
+  email: string;
+  password: string;
 }
 
 export enum AuthActionTypes {

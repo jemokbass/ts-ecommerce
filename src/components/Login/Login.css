@@ -2,3 +2,12 @@
   width: 50%;
   margin: 0 auto;
 }
+
+.login__button + .login__button {
+  background: rgba(var(--current-color-rgb), 0.8);
+  margin: 10px auto 0;
+}
+
+.login__button + .login__button:hover {
+  background: rgba(var(--current-color-rgb), 1);
+}

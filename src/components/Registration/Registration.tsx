@@ -1,13 +1,15 @@
-import { FC, useState, ChangeEvent } from 'react';
+import { FC, useState, ChangeEvent, FormEvent } from 'react';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
 import { IRegistrationFields } from '../../utils/types/auth';
+import { auth, handleUserProfile } from '../../utils/firebase/utils';
 
 const initialState: IRegistrationFields = {
   displayName: '',
   email: '',
   password: '',
   confirmPassword: '',
+  errors: [''],
 };
 
 const Registration: FC = () => {
@@ -18,8 +20,27 @@ const Registration: FC = () => {
     setFields(prevState => ({ ...prevState, [name]: value }));
   };
 
+  const handleFormSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    const { displayName, email, password, confirmPassword } = fields;
+
+    if (password !== confirmPassword) {
+      const err = ["Password don't match"];
+      setFields(prevState => ({ ...prevState, errors: err }));
+      return;
+    }
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(email, password);
+
+      await handleUserProfile(user, { displayName });
+      setFields(prevState => ({ ...prevState, ...initialState }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <form className="registration">
+    <form className="registration" onSubmit={handleFormSubmit}>
       <Input
         label="Full Name"
         type="text"
@@ -29,7 +50,7 @@ const Registration: FC = () => {
         onChange={e => handleChange(e)}
       />
       <Input
-        label="E-mail"
+        label="Email"
         type="email"
         name="email"
         placeholder="john@gmail.com"
@@ -52,6 +73,15 @@ const Registration: FC = () => {
         value={fields.confirmPassword}
         onChange={e => handleChange(e)}
       />
+      {fields.errors.length > 0 && (
+        <ul className="registration__list">
+          {fields.errors.map(err => (
+            <li className="registration__item" key={err}>
+              {err}
+            </li>
+          ))}
+        </ul>
+      )}
       <Button className="registration__button" type="submit">
         Sign Up
       </Button>

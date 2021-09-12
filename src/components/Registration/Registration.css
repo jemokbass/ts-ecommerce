@@ -2,3 +2,8 @@
   width: 50%;
   margin: 40px auto 0;
 }
+
+.registration__list {
+  max-width: 370px;
+  margin: 0 auto 20px;
+}

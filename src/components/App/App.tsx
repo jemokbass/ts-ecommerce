@@ -11,7 +11,7 @@ const initialState: IAuthState = {
 };
 
 const App: FC = () => {
-  const [state, setState] = useState({ ...initialState });
+  const [state, setState] = useState<IAuthState>({ ...initialState });
 
   let authListener: any = null;
 
@@ -20,10 +20,12 @@ const App: FC = () => {
       if (userAuth) {
         const userRef = await handleUserProfile(userAuth);
         userRef?.onSnapshot(snapshot => {
-          setState(prevState => ({
+          setState((prevState: any) => ({
             ...prevState,
-            id: snapshot.id,
-            ...snapshot.data(),
+            currentUser: {
+              id: snapshot.id,
+              ...snapshot.data(),
+            },
           }));
         });
       }
