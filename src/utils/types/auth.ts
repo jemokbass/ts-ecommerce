@@ -21,6 +21,11 @@ export interface ILoginFields {
   password: string;
 }
 
+export interface IRecoveryFields {
+  email: string;
+  errors: string[];
+}
+
 export enum AuthActionTypes {
   AUTH_LOG_IN = "AUTH_LOG_IN",
 }

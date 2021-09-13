@@ -7,8 +7,9 @@ const Routes: FC<IAuthState> = ({ currentUser }) => {
   let routes = (
     <>
       <Route exact path="/" component={lazyRoutes.HomePage} />
-      <Route exact path="/registration" component={lazyRoutes.SignUpPage} />
-      <Route exact path="/login" component={lazyRoutes.LoginPage} />
+      <Route path="/registration" component={lazyRoutes.SignUpPage} />
+      <Route path="/login" component={lazyRoutes.LoginPage} />
+      <Route path="/recovery" component={lazyRoutes.RecoveryPage} />
       <Redirect to="/" />
     </>
   );
@@ -17,7 +18,7 @@ const Routes: FC<IAuthState> = ({ currentUser }) => {
     routes = (
       <>
         <Route exact path="/" component={lazyRoutes.HomePage} />
-        <Route exact path="/logout" component={lazyRoutes.LogoutPage} />
+        <Route path="/logout" component={lazyRoutes.LogoutPage} />
         <Redirect to="/" />
       </>
     );

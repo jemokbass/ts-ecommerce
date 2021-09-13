@@ -4,6 +4,7 @@ import { signInWithGoogle, auth } from '../../utils/firebase/utils';
 import Button from '../../components/UI/Button/Button';
 import { ILoginFields } from '../../utils/types/auth';
 import Input from '../UI/Input/Input';
+import { Link } from 'react-router-dom';
 
 const initialState: ILoginFields = {
   email: '',
@@ -31,6 +32,9 @@ const Login: FC = () => {
 
   return (
     <form className="login" onSubmit={onSubmitForm}>
+      <Link className="login__link" to="/recovery">
+        Forgot Password?
+      </Link>
       <Input
         label="Email"
         type="email"

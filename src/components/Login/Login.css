@@ -11,3 +11,19 @@
 .login__button + .login__button:hover {
   background: rgba(var(--current-color-rgb), 1);
 }
+
+.login__link {
+  display: block;
+  width: min-content;
+  margin: 0 0 20px auto;
+  padding: 0 5px;
+  font-weight: 500;
+  color: var(--black-color);
+  border-bottom: 1px solid var(--yellow-color);
+  white-space: nowrap;
+  transition: all 0.3s ease 0s;
+}
+
+.login__link:hover {
+  border-bottom: 1px solid transparent;
+}

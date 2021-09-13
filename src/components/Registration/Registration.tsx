@@ -3,6 +3,7 @@ import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
 import { IRegistrationFields } from '../../utils/types/auth';
 import { auth, handleUserProfile } from '../../utils/firebase/utils';
+import ErrorList from '../Error/ErrorList/ErrorList';
 
 const initialState: IRegistrationFields = {
   displayName: '',
@@ -73,15 +74,7 @@ const Registration: FC = () => {
         value={fields.confirmPassword}
         onChange={e => handleChange(e)}
       />
-      {fields.errors.length > 0 && (
-        <ul className="registration__list">
-          {fields.errors.map(err => (
-            <li className="registration__item" key={err}>
-              {err}
-            </li>
-          ))}
-        </ul>
-      )}
+      {fields.errors.length > 0 && <ErrorList errors={fields.errors} />}
       <Button className="registration__button" type="submit">
         Sign Up
       </Button>

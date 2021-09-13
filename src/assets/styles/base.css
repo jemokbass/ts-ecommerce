@@ -10,6 +10,8 @@
 @import '../../components/Navigation/Navigation';
 @import '../../components/Registration/Registration';
 @import '../../components/Login/Login';
+@import '../../components/Recovery/Recovery';
+@import '../../components/Error/ErrorList/ErrorList';
 
 /*UI*/
 @import '../../components/UI/Button/Button';
@@ -20,3 +22,4 @@
 @import '../../pages/HomePage/HomePage';
 @import '../../pages/RegistrationPage/RegistrationPage';
 @import '../../pages/LoginPage/LoginPage';
+@import '../../pages/RecoveryPage/RecoveryPage';
