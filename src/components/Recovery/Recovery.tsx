@@ -1,8 +1,8 @@
 import { FC, useState, ChangeEvent, FormEvent } from 'react';
-import { IRecoveryFields } from '../../utils/types/auth';
+import { IRecoveryFields } from '../../utils/types/user.types';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
-import { auth } from '../../utils/firebase/utils';
+import { auth } from '../../utils/firebase/utils.firebase';
 import { useHistory } from 'react-router';
 import ErrorList from '../Error/ErrorList/ErrorList';
 

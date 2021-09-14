@@ -1,9 +1,9 @@
 import { FC } from 'react';
-import { IAuthState } from '../../utils/types/auth';
+import { IUserState } from '../../utils/types/user.types';
 import Logo from '../Logo/Logo';
 import Navigation from '../Navigation/Navigation';
 
-const Header: FC<IAuthState> = ({ currentUser }) => {
+const Header: FC<IUserState> = ({ currentUser }) => {
   return (
     <header className="header">
       <Logo />

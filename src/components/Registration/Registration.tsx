@@ -1,8 +1,8 @@
 import { FC, useState, ChangeEvent, FormEvent } from 'react';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
-import { IRegistrationFields } from '../../utils/types/auth';
-import { auth, handleUserProfile } from '../../utils/firebase/utils';
+import { IRegistrationFields } from '../../utils/types/user.types';
+import { auth, handleUserProfile } from '../../utils/firebase/utils.firebase';
 import ErrorList from '../Error/ErrorList/ErrorList';
 
 const initialState: IRegistrationFields = {

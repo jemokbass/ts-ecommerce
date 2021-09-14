@@ -1,17 +1,17 @@
 import { FC, useEffect, useState } from 'react';
-import { auth, handleUserProfile } from '../../utils/firebase/utils';
+import { auth, handleUserProfile } from '../../utils/firebase/utils.firebase';
 
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Routes from './routes';
-import { IAuthState } from '../../utils/types/auth';
+import { IUserState } from '../../utils/types/user.types';
 
-const initialState: IAuthState = {
+const initialState: IUserState = {
   currentUser: null,
 };
 
 const App: FC = () => {
-  const [state, setState] = useState<IAuthState>({ ...initialState });
+  const [state, setState] = useState<IUserState>({ ...initialState });
 
   let authListener: any = null;
 

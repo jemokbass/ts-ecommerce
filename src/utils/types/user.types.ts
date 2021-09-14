@@ -4,7 +4,7 @@ export interface ICurrentUser {
   email?: string | null;
   password?: string | null;
 }
-export interface IAuthState {
+export interface IUserState {
   currentUser: null | ICurrentUser;
 }
 
@@ -27,11 +27,12 @@ export interface IRecoveryFields {
 }
 
 export enum AuthActionTypes {
-  AUTH_LOG_IN = "AUTH_LOG_IN",
+  SET_CURRENT_USER = "SET_CURRENT_USER",
 }
 
-interface AuthLogIn {
-  type: AuthActionTypes.AUTH_LOG_IN;
+interface SetCurrentUser {
+  type: AuthActionTypes.SET_CURRENT_USER;
+  payload: ICurrentUser;
 }
 
-export type AuthAction = AuthLogIn;
+export type AuthAction = SetCurrentUser;

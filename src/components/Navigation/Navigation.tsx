@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
-import { IAuthState } from '../../utils/types/auth';
+import { IUserState } from '../../utils/types/user.types';
 
 interface ILinks {
   path: string;
@@ -8,7 +8,7 @@ interface ILinks {
   title: string;
 }
 
-const Navigation: FC<IAuthState> = ({ currentUser }) => {
+const Navigation: FC<IUserState> = ({ currentUser }) => {
   let links: ILinks[] = [
     { path: '/', exact: true, title: 'Homepage' },
     { path: '/registration', exact: false, title: 'Registration' },

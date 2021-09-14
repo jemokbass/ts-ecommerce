@@ -1,8 +1,8 @@
 import { FC, FormEvent, useState, ChangeEvent } from 'react';
-import { signInWithGoogle, auth } from '../../utils/firebase/utils';
+import { signInWithGoogle, auth } from '../../utils/firebase/utils.firebase';
 
 import Button from '../../components/UI/Button/Button';
-import { ILoginFields } from '../../utils/types/auth';
+import { ILoginFields } from '../../utils/types/user.types';
 import Input from '../UI/Input/Input';
 import { Link } from 'react-router-dom';
 

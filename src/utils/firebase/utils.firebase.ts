@@ -1,8 +1,8 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
-import { firebaseConfig } from "./config";
-import { ICurrentUser } from "../types/auth";
+import { firebaseConfig } from "./config.firebase";
+import { ICurrentUser } from "../types/user.types";
 
 firebase.initializeApp(firebaseConfig);
 

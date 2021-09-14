@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { Redirect } from 'react-router';
-import { auth } from '../../utils/firebase/utils';
+import { auth } from '../../utils/firebase/utils.firebase';
 
 const LogoutPage: FC = () => {
   const [isSuccessful, setIsSuccessful] = useState(false);
