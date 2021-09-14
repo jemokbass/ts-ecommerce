@@ -1,17 +1,15 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect } from 'react';
 import { auth, handleUserProfile } from '../../utils/firebase/utils.firebase';
 
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Routes from './routes';
-import { IUserState } from '../../utils/types/user.types';
-
-const initialState: IUserState = {
-  currentUser: null,
-};
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useActions } from '../../hooks/useActions';
 
 const App: FC = () => {
-  const [state, setState] = useState<IUserState>({ ...initialState });
+  const { currentUser } = useTypedSelector(state => state.user);
+  const { setCurrentUser } = useActions();
 
   let authListener: any = null;
 
@@ -20,17 +18,14 @@ const App: FC = () => {
       if (userAuth) {
         const userRef = await handleUserProfile(userAuth);
         userRef?.onSnapshot(snapshot => {
-          setState((prevState: any) => ({
-            ...prevState,
-            currentUser: {
-              id: snapshot.id,
-              ...snapshot.data(),
-            },
-          }));
+          setCurrentUser({
+            uid: snapshot.id,
+            ...snapshot.data(),
+          });
         });
       }
 
-      setState({ ...initialState });
+      setCurrentUser(userAuth);
     });
 
     return () => {
@@ -40,9 +35,9 @@ const App: FC = () => {
 
   return (
     <div className="app">
-      <Header currentUser={state.currentUser} />
+      <Header currentUser={currentUser} />
       <main className="main">
-        <Routes currentUser={state.currentUser} />
+        <Routes currentUser={currentUser} />
       </main>
       <Footer />
     </div>

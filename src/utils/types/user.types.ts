@@ -26,13 +26,13 @@ export interface IRecoveryFields {
   errors: string[];
 }
 
-export enum AuthActionTypes {
+export enum UserActionTypes {
   SET_CURRENT_USER = "SET_CURRENT_USER",
 }
 
 interface SetCurrentUser {
-  type: AuthActionTypes.SET_CURRENT_USER;
+  type: UserActionTypes.SET_CURRENT_USER;
   payload: ICurrentUser;
 }
 
-export type AuthAction = SetCurrentUser;
+export type UserAction = SetCurrentUser;
