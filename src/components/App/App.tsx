@@ -11,10 +11,8 @@ const App: FC = () => {
   const { currentUser } = useTypedSelector(state => state.user);
   const { setCurrentUser } = useActions();
 
-  let authListener: any = null;
-
   useEffect(() => {
-    authListener = auth.onAuthStateChanged(async (userAuth: any) => {
+    const authListener = auth.onAuthStateChanged(async (userAuth: any) => {
       if (userAuth) {
         const userRef = await handleUserProfile(userAuth);
         userRef?.onSnapshot(snapshot => {
