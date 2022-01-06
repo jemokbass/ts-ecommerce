@@ -6,6 +6,11 @@ export interface ICurrentUser {
 }
 export interface IUserState {
   currentUser: null | ICurrentUser;
+  signInSuccess: boolean;
+  signUpSuccess: boolean;
+  signUpError: any[];
+  recoverySuccess: boolean;
+  recoveryError: any[];
 }
 
 export interface IRegistrationFields {
@@ -28,11 +33,59 @@ export interface IRecoveryFields {
 
 export enum UserActionTypes {
   SET_CURRENT_USER = "SET_CURRENT_USER",
+  SIGN_IN_USER = "SIGN_IN_USER",
+  SIGN_IN_SUCCESS = "SIGN_IN_SUCCESS",
+  SIGN_UP_ERROR = "SIGN_UP_ERROR",
+  SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS",
+  RECOVERY_ERROR = "RECOVERY_ERROR",
+  RECOVERY_SUCCESS = "RECOVERY_SUCCESS",
+  RESET_AUTH_FORM = "RESET_AUTH_FORM",
 }
 
-interface SetCurrentUser {
+interface ISetCurrentUser {
   type: UserActionTypes.SET_CURRENT_USER;
   payload: ICurrentUser;
 }
 
-export type UserAction = SetCurrentUser;
+export interface ISignInSuccess {
+  type: UserActionTypes.SIGN_IN_SUCCESS;
+  payload: boolean;
+}
+export interface ISignUpSuccess {
+  type: UserActionTypes.SIGN_UP_SUCCESS;
+  payload: boolean;
+}
+
+export interface ISignUpError {
+  type: UserActionTypes.SIGN_UP_ERROR;
+  payload: any[];
+}
+
+export interface IRecoverySuccess {
+  type: UserActionTypes.RECOVERY_SUCCESS;
+  payload: boolean;
+}
+
+export interface IRecoveryError {
+  type: UserActionTypes.RECOVERY_ERROR;
+  payload: any[];
+}
+
+export interface IResetAuthForm {
+  type: UserActionTypes.RESET_AUTH_FORM;
+}
+
+interface ISignInUser {
+  type: UserActionTypes.SIGN_IN_USER;
+  payload: ILoginFields;
+}
+
+export type UserAction =
+  | ISetCurrentUser
+  | ISignInUser
+  | ISignInSuccess
+  | ISignUpError
+  | ISignUpSuccess
+  | IRecoverySuccess
+  | IRecoveryError
+  | IResetAuthForm;

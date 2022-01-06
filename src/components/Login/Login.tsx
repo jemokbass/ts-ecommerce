@@ -1,38 +1,43 @@
-import { FC, FormEvent, useState, ChangeEvent } from 'react';
-import { signInWithGoogle, auth } from '../../utils/firebase/utils.firebase';
+import { FC, FormEvent, useState, ChangeEvent, useEffect } from 'react';
 
 import Button from '../../components/UI/Button/Button';
-import { ILoginFields } from '../../utils/types/user.types';
 import Input from '../UI/Input/Input';
 import { Link } from 'react-router-dom';
-
-const initialState: ILoginFields = {
-  email: '',
-  password: '',
-};
+import { useActions } from '../../hooks/useActions';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useHistory } from 'react-router';
+import { ROUTES } from '../../utils/routes/routes';
 
 const Login: FC = () => {
-  const [fields, setFields] = useState({ ...initialState });
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const { signInSuccess } = useTypedSelector(state => state.user);
+  const { push } = useHistory();
+  const { signInUser, signInWithGoogle, resetAuthForm } = useActions();
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    const { value, name } = e.target;
-    setFields(prevState => ({ ...prevState, [name]: value }));
+  useEffect(() => {
+    if (signInSuccess) {
+      reset();
+      resetAuthForm();
+      push(ROUTES.HOME);
+    }
+    return () => {};
+  }, [signInSuccess, push, resetAuthForm]);
+
+  const reset = (): void => {
+    setEmail('');
+    setPassword('');
   };
 
   const onSubmitForm = async (event: FormEvent) => {
     event.preventDefault();
 
-    try {
-      await auth.signInWithEmailAndPassword(fields.email, fields.password);
-      setFields(prevState => ({ ...prevState, ...initialState }));
-    } catch (error) {
-      console.log(error);
-    }
+    signInUser({ email, password });
   };
 
   return (
     <form className="login" onSubmit={onSubmitForm}>
-      <Link className="login__link" to="/recovery">
+      <Link className="login__link" to={ROUTES.RECOVERY}>
         Forgot Password?
       </Link>
       <Input
@@ -40,16 +45,16 @@ const Login: FC = () => {
         type="email"
         name="email"
         placeholder="john@gmail.com"
-        value={fields.email}
-        onChange={e => handleChange(e)}
+        value={email}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
       />
       <Input
         label="Password"
         type="password"
         name="password"
         placeholder="da@3#zxe"
-        value={fields.password}
-        onChange={e => handleChange(e)}
+        value={password}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
       />
       <Button className="login__button" type="submit">
         Log In

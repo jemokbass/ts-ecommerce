@@ -4,11 +4,9 @@ import { auth, handleUserProfile } from '../../utils/firebase/utils.firebase';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Routes from './routes';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
 
 const App: FC = () => {
-  const { currentUser } = useTypedSelector(state => state.user);
   const { setCurrentUser } = useActions();
 
   useEffect(() => {
@@ -29,13 +27,14 @@ const App: FC = () => {
     return () => {
       authListener();
     };
+    // eslint-disable-next-line
   }, []);
 
   return (
     <div className="app">
-      <Header currentUser={currentUser} />
+      <Header />
       <main className="main">
-        <Routes currentUser={currentUser} />
+        <Routes />
       </main>
       <Footer />
     </div>

@@ -1,43 +1,53 @@
-import { FC, useState, ChangeEvent, FormEvent } from 'react';
+import { FC, useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
-import { IRegistrationFields } from '../../utils/types/user.types';
-import { auth, handleUserProfile } from '../../utils/firebase/utils.firebase';
 import ErrorList from '../Error/ErrorList/ErrorList';
-
-const initialState: IRegistrationFields = {
-  displayName: '',
-  email: '',
-  password: '',
-  confirmPassword: '',
-  errors: [''],
-};
+import { useActions } from '../../hooks/useActions';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useHistory } from 'react-router';
+import { ROUTES } from '../../utils/routes/routes';
 
 const Registration: FC = () => {
-  const [fields, setFields] = useState({ ...initialState });
+  const [displayName, setDisplayName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const [errors, setErrors] = useState<string[]>([]);
+  const { push } = useHistory();
+  const { signUpSuccess, signUpError } = useTypedSelector(state => state.user);
+  const { signUpUser, resetAuthForm } = useActions();
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    const { value, name } = e.target;
-    setFields(prevState => ({ ...prevState, [name]: value }));
+  useEffect(() => {
+    if (signUpSuccess) {
+      reset();
+      resetAuthForm();
+      push(ROUTES.HOME);
+    }
+  }, [signUpSuccess, push, resetAuthForm]);
+
+  useEffect(() => {
+    if (Array.isArray(signUpError) && signUpError.length > 0) {
+      setErrors(signUpError);
+    }
+  }, [signUpError]);
+
+  const reset = (): void => {
+    setDisplayName('');
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
   };
 
   const handleFormSubmit = async (e: FormEvent) => {
+    setErrors([]);
     e.preventDefault();
-    const { displayName, email, password, confirmPassword } = fields;
 
-    if (password !== confirmPassword) {
-      const err = ["Password don't match"];
-      setFields(prevState => ({ ...prevState, errors: err }));
-      return;
-    }
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword(email, password);
-
-      await handleUserProfile(user, { displayName });
-      setFields(prevState => ({ ...prevState, ...initialState }));
-    } catch (error) {
-      console.log(error);
-    }
+    signUpUser({
+      displayName,
+      email,
+      password,
+      confirmPassword,
+    });
   };
 
   return (
@@ -47,34 +57,34 @@ const Registration: FC = () => {
         type="text"
         name="displayName"
         placeholder="John"
-        value={fields.displayName}
-        onChange={e => handleChange(e)}
+        value={displayName}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setDisplayName(e.target.value)}
       />
       <Input
         label="Email"
         type="email"
         name="email"
         placeholder="john@gmail.com"
-        value={fields.email}
-        onChange={e => handleChange(e)}
+        value={email}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
       />
       <Input
         label="Password"
         type="password"
         name="password"
         placeholder="da@3#zxe"
-        value={fields.password}
-        onChange={e => handleChange(e)}
+        value={password}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
       />
       <Input
         label="Confirm Password"
         type="password"
         name="confirmPassword"
         placeholder="da@3#zxe"
-        value={fields.confirmPassword}
-        onChange={e => handleChange(e)}
+        value={confirmPassword}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value)}
       />
-      {fields.errors.length > 0 && <ErrorList errors={fields.errors} />}
+      {errors.length > 0 && <ErrorList errors={errors} />}
       <Button className="registration__button" type="submit">
         Sign Up
       </Button>

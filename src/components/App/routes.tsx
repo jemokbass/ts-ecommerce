@@ -1,15 +1,18 @@
 import { FC, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { IUserState } from '../../utils/types/user.types';
+import { ROUTES } from '../../utils/routes/routes';
 import * as lazyRoutes from './lazyRoutes';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
-const Routes: FC<IUserState> = ({ currentUser }) => {
+const Routes: FC = () => {
+  const { currentUser } = useTypedSelector(state => state.user);
+
   let routes = (
     <>
       <Route exact path="/" component={lazyRoutes.HomePage} />
-      <Route path="/registration" component={lazyRoutes.SignUpPage} />
-      <Route path="/login" component={lazyRoutes.LoginPage} />
-      <Route path="/recovery" component={lazyRoutes.RecoveryPage} />
+      <Route path={ROUTES.REGISTRATION} component={lazyRoutes.SignUpPage} />
+      <Route path={ROUTES.LOGIN} component={lazyRoutes.LoginPage} />
+      <Route path={ROUTES.RECOVERY} component={lazyRoutes.RecoveryPage} />
     </>
   );
 
@@ -17,7 +20,7 @@ const Routes: FC<IUserState> = ({ currentUser }) => {
     routes = (
       <>
         <Route exact path="/" component={lazyRoutes.HomePage} />
-        <Route path="/logout" component={lazyRoutes.LogoutPage} />
+        <Route path={ROUTES.LOGOUT} component={lazyRoutes.LogoutPage} />
       </>
     );
   }

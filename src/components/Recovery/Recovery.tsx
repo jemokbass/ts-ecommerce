@@ -1,44 +1,37 @@
-import { FC, useState, ChangeEvent, FormEvent } from 'react';
-import { IRecoveryFields } from '../../utils/types/user.types';
+import { FC, useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
-import { auth } from '../../utils/firebase/utils.firebase';
 import { useHistory } from 'react-router';
 import ErrorList from '../Error/ErrorList/ErrorList';
-
-const initialState: IRecoveryFields = {
-  email: '',
-  errors: [],
-};
+import { useActions } from '../../hooks/useActions';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { ROUTES } from '../../utils/routes/routes';
 
 const Recovery: FC = () => {
-  const [fields, setFields] = useState({ ...initialState });
-  const history = useHistory();
+  const [email, setEmail] = useState<string>('');
+  const [errors, setErrors] = useState<string[]>([]);
+  const { push } = useHistory();
+  const { recoveryPassword, resetAuthForm } = useActions();
+  const { recoverySuccess, recoveryError } = useTypedSelector(state => state.user);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    const { value, name } = e.target;
-    setFields(prevState => ({ ...prevState, [name]: value }));
-  };
+  useEffect(() => {
+    if (recoverySuccess) {
+      resetAuthForm();
+      push(ROUTES.LOGIN);
+    }
+  }, [recoverySuccess, push, resetAuthForm]);
+
+  useEffect(() => {
+    if (Array.isArray(recoveryError) && recoveryError.length > 0) {
+      setErrors(recoveryError);
+    }
+  }, [recoveryError]);
 
   const onSubmitForm = async (e: FormEvent) => {
-    setFields(prevState => ({ ...prevState, errors: [] }));
+    setErrors([]);
     e.preventDefault();
-    const config = {
-      url: 'http://localhost:3000/login',
-    };
 
-    try {
-      await auth
-        .sendPasswordResetEmail(fields.email, config)
-        .then(result => {
-          history.push('/login');
-        })
-        .catch(err => {
-          setFields(prevState => ({ ...prevState, errors: [...prevState.errors, err.message] }));
-        });
-    } catch (error) {
-      console.log(error);
-    }
+    recoveryPassword({ email });
   };
 
   return (
@@ -48,10 +41,10 @@ const Recovery: FC = () => {
         name="email"
         placeholder="john@gmail.com"
         type="email"
-        value={fields.email}
-        onChange={e => handleChange(e)}
+        value={email}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
       />
-      {fields.errors.length > 0 && <ErrorList errors={fields.errors} />}
+      {errors.length > 0 && <ErrorList errors={errors} />}
       <Button className="recovery__button" type="submit">
         Recovery
       </Button>

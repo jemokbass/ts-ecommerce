@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
-import { IUserState } from '../../utils/types/user.types';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { ROUTES } from '../../utils/routes/routes';
 
 interface ILinks {
   path: string;
@@ -8,17 +9,18 @@ interface ILinks {
   title: string;
 }
 
-const Navigation: FC<IUserState> = ({ currentUser }) => {
+const Navigation: FC = () => {
+  const { currentUser } = useTypedSelector(state => state.user);
   let links: ILinks[] = [
-    { path: '/', exact: true, title: 'Homepage' },
-    { path: '/registration', exact: false, title: 'Registration' },
-    { path: '/login', exact: false, title: 'Login' },
+    { path: ROUTES.HOME, exact: true, title: 'Homepage' },
+    { path: ROUTES.REGISTRATION, exact: false, title: 'Registration' },
+    { path: ROUTES.LOGIN, exact: false, title: 'Login' },
   ];
 
   if (currentUser) {
     links = [
-      { path: '/', exact: true, title: 'Homepage' },
-      { path: '/logout', exact: false, title: 'Logout' },
+      { path: ROUTES.HOME, exact: true, title: 'Homepage' },
+      { path: ROUTES.LOGOUT, exact: false, title: 'Logout' },
     ];
   }
 
