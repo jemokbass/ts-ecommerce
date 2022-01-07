@@ -1,3 +1,3 @@
-import * as actions from './userActions';
+import * as actions from './user.actions';
 
 export { actions };

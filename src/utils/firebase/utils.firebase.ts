@@ -12,13 +12,10 @@ export const firestore = firebase.firestore();
 export const GoogleProvider = new firebase.auth.GoogleAuthProvider();
 GoogleProvider.setCustomParameters({ prompt: "select_account" });
 
-export const handleUserProfile = async (
-  userAuth: ICurrentUser | null,
-  additionalData?: object
-) => {
+export const handleUserProfile = async ({ userAuth, additionalData }: any) => {
   if (!userAuth) return;
-  const { uid } = userAuth;
-  const userRef = firestore.doc(`users/${uid}`);
+  const { id } = userAuth;
+  const userRef = firestore.doc(`users/${id}`);
   const snapshot = await userRef.get();
 
   if (!snapshot.exists) {
@@ -37,4 +34,13 @@ export const handleUserProfile = async (
   }
 
   return userRef;
+};
+
+export const getCurrentUser = (): Promise<ICurrentUser | null> => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject);
+  });
 };

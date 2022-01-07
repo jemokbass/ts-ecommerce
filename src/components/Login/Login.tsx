@@ -11,18 +11,16 @@ import { ROUTES } from '../../utils/routes/routes';
 const Login: FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const { signInSuccess } = useTypedSelector(state => state.user);
+  const { currentUser } = useTypedSelector(state => state.user);
   const { push } = useHistory();
-  const { signInUser, signInWithGoogle, resetAuthForm } = useActions();
+  const { signInStart, googleSignInStart } = useActions();
 
   useEffect(() => {
-    if (signInSuccess) {
+    if (currentUser) {
       reset();
-      resetAuthForm();
       push(ROUTES.HOME);
     }
-    return () => {};
-  }, [signInSuccess, push, resetAuthForm]);
+  }, [currentUser, push]);
 
   const reset = (): void => {
     setEmail('');
@@ -32,7 +30,7 @@ const Login: FC = () => {
   const onSubmitForm = async (event: FormEvent) => {
     event.preventDefault();
 
-    signInUser({ email, password });
+    signInStart({ email, password });
   };
 
   return (
@@ -59,7 +57,7 @@ const Login: FC = () => {
       <Button className="login__button" type="submit">
         Log In
       </Button>
-      <Button className="login__button" onClick={signInWithGoogle} type="button">
+      <Button className="login__button" onClick={googleSignInStart} type="button">
         Sign In with Google
       </Button>
     </form>

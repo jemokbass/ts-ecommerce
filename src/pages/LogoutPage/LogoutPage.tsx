@@ -1,25 +1,23 @@
-import { FC, useEffect, useState } from 'react';
-import { Redirect } from 'react-router';
-import { auth } from '../../utils/firebase/utils.firebase';
+import { FC, useCallback, useEffect } from 'react';
+import { useHistory } from 'react-router';
 import { ROUTES } from '../../utils/routes/routes';
+import { useActions } from '../../hooks/useActions';
 
 const LogoutPage: FC = () => {
-  const [isSuccessful, setIsSuccessful] = useState(false);
+  const { push } = useHistory();
+  const { signOutStart } = useActions();
 
-  const logOutAction = async () => {
-    await auth.signOut();
-    setIsSuccessful(true);
-  };
+  const logOutAction = useCallback(() => {
+    signOutStart();
+
+    return push(ROUTES.LOGIN);
+  }, [signOutStart, push]);
 
   useEffect(() => {
     logOutAction();
+  }, [logOutAction]);
 
-    return () => {
-      logOutAction();
-    };
-  }, []);
-
-  return <section className="logout-page">{isSuccessful && <Redirect to={ROUTES.HOME} />}</section>;
+  return <section className="logout-page"></section>;
 };
 
 export default LogoutPage;

@@ -19,6 +19,7 @@ const Routes: FC = () => {
   if (currentUser) {
     routes = (
       <>
+        <Route path={ROUTES.LOGIN} component={lazyRoutes.LoginPage} />
         <Route exact path="/" component={lazyRoutes.HomePage} />
         <Route path={ROUTES.LOGOUT} component={lazyRoutes.LogoutPage} />
       </>

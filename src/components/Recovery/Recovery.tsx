@@ -11,27 +11,28 @@ const Recovery: FC = () => {
   const [email, setEmail] = useState<string>('');
   const [errors, setErrors] = useState<string[]>([]);
   const { push } = useHistory();
-  const { recoveryPassword, resetAuthForm } = useActions();
-  const { recoverySuccess, recoveryError } = useTypedSelector(state => state.user);
+  const { resetPasswordStart, resetUserState } = useActions();
+  const { resetPasswordSuccess, error } = useTypedSelector(state => state.user);
 
   useEffect(() => {
-    if (recoverySuccess) {
-      resetAuthForm();
+    if (resetPasswordSuccess) {
+      setEmail('');
+      resetUserState();
       push(ROUTES.LOGIN);
     }
-  }, [recoverySuccess, push, resetAuthForm]);
+  }, [resetPasswordSuccess, push, resetUserState]);
 
   useEffect(() => {
-    if (Array.isArray(recoveryError) && recoveryError.length > 0) {
-      setErrors(recoveryError);
+    if (Array.isArray(error) && error.length > 0) {
+      setErrors(error);
     }
-  }, [recoveryError]);
+  }, [error]);
 
   const onSubmitForm = async (e: FormEvent) => {
     setErrors([]);
     e.preventDefault();
 
-    recoveryPassword({ email });
+    resetPasswordStart({ email });
   };
 
   return (

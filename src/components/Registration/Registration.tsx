@@ -14,22 +14,21 @@ const Registration: FC = () => {
   const [confirmPassword, setConfirmPassword] = useState<string>('');
   const [errors, setErrors] = useState<string[]>([]);
   const { push } = useHistory();
-  const { signUpSuccess, signUpError } = useTypedSelector(state => state.user);
-  const { signUpUser, resetAuthForm } = useActions();
+  const { currentUser, error } = useTypedSelector(state => state.user);
+  const { signUpStart } = useActions();
 
   useEffect(() => {
-    if (signUpSuccess) {
+    if (currentUser) {
       reset();
-      resetAuthForm();
       push(ROUTES.HOME);
     }
-  }, [signUpSuccess, push, resetAuthForm]);
+  }, [currentUser, push]);
 
   useEffect(() => {
-    if (Array.isArray(signUpError) && signUpError.length > 0) {
-      setErrors(signUpError);
+    if (Array.isArray(error) && error.length > 0) {
+      setErrors(error);
     }
-  }, [signUpError]);
+  }, [error]);
 
   const reset = (): void => {
     setDisplayName('');
@@ -42,12 +41,7 @@ const Registration: FC = () => {
     setErrors([]);
     e.preventDefault();
 
-    signUpUser({
-      displayName,
-      email,
-      password,
-      confirmPassword,
-    });
+    signUpStart({ displayName, email, password, confirmPassword });
   };
 
   return (
