@@ -13,11 +13,12 @@ export enum UserActionTypes {
 }
 
 export interface ICurrentUser {
-  id?: string | null;
-  displayName?: string | null;
-  email?: string | null;
-  password?: string | null;
+  id: string | null;
+  displayName: string | null;
+  email: string | null;
+  userRoles: string[];
 }
+
 export interface IUserState {
   currentUser: null | ICurrentUser;
   resetPasswordSuccess: boolean;

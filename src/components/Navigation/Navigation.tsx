@@ -19,7 +19,7 @@ const Navigation: FC = () => {
 
   if (currentUser) {
     links = [
-      { path: ROUTES.HOME, exact: true, title: 'Homepage' },
+      { path: ROUTES.DASHBOARD, exact: true, title: 'Dashboard' },
       { path: ROUTES.LOGOUT, exact: false, title: 'Logout' },
     ];
   }

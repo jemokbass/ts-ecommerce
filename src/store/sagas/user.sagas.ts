@@ -11,7 +11,7 @@ import { signInSuccess, signOutSuccess, userError, resetPasswordSuccess } from '
 import { handleResetPasswordAPI } from '../../utils/helpers/user.helpers';
 
 export function* getSnapshotFromUserAuth(
-  user: Promise<ICurrentUser | null>,
+  user: Promise<ICurrentUser | null | {}>,
   additionalData = {}
 ): Generator | ICurrentUser {
   try {

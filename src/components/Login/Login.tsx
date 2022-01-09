@@ -18,7 +18,7 @@ const Login: FC = () => {
   useEffect(() => {
     if (currentUser) {
       reset();
-      push(ROUTES.HOME);
+      push(ROUTES.DASHBOARD);
     }
   }, [currentUser, push]);
 

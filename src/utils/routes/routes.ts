@@ -3,5 +3,7 @@ export enum ROUTES {
   REGISTRATION = "/registration",
   RECOVERY = "/recovery",
   LOGOUT = "/logout",
+  DASHBOARD = "/dashboard",
+  ADMIN = "/admin",
   HOME = "/",
 }
