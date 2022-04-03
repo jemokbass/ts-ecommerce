@@ -1,30 +1,30 @@
-import { FC, FormEvent, useState, ChangeEvent, useEffect } from 'react';
+import { FC, FormEvent, useState, ChangeEvent, useEffect } from "react";
 
-import Button from '../../components/UI/Button/Button';
-import Input from '../UI/Input/Input';
-import { Link } from 'react-router-dom';
-import { useActions } from '../../hooks/useActions';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { useHistory } from 'react-router';
-import { ROUTES } from '../../utils/routes/routes';
+import Button from "../../components/UI/Button/Button";
+import Input from "../UI/Input/Input";
+import { Link } from "react-router-dom";
+import { useActions } from "../../hooks/useActions";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../utils/routes/routes";
 
 const Login: FC = () => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const { currentUser } = useTypedSelector(state => state.user);
-  const { push } = useHistory();
+  const navigate = useNavigate();
   const { signInStart, googleSignInStart } = useActions();
 
   useEffect(() => {
     if (currentUser) {
       reset();
-      push(ROUTES.DASHBOARD);
+      navigate(ROUTES.DASHBOARD);
     }
-  }, [currentUser, push]);
+  }, [currentUser, navigate]);
 
   const reset = (): void => {
-    setEmail('');
-    setPassword('');
+    setEmail("");
+    setPassword("");
   };
 
   const onSubmitForm = async (event: FormEvent) => {

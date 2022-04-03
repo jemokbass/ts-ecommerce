@@ -1,28 +1,28 @@
-import { FC, useState, ChangeEvent, FormEvent, useEffect } from 'react';
-import Button from '../UI/Button/Button';
-import Input from '../UI/Input/Input';
-import ErrorList from '../Error/ErrorList/ErrorList';
-import { useActions } from '../../hooks/useActions';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { useHistory } from 'react-router';
-import { ROUTES } from '../../utils/routes/routes';
+import { FC, useState, ChangeEvent, FormEvent, useEffect } from "react";
+import Button from "../UI/Button/Button";
+import Input from "../UI/Input/Input";
+import ErrorList from "../Error/ErrorList/ErrorList";
+import { useActions } from "../../hooks/useActions";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../utils/routes/routes";
 
 const Registration: FC = () => {
-  const [displayName, setDisplayName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const [displayName, setDisplayName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [errors, setErrors] = useState<string[]>([]);
-  const { push } = useHistory();
+  const navigate = useNavigate();
   const { currentUser, error } = useTypedSelector(state => state.user);
   const { signUpStart } = useActions();
 
   useEffect(() => {
     if (currentUser) {
       reset();
-      push(ROUTES.HOME);
+      navigate(ROUTES.HOME);
     }
-  }, [currentUser, push]);
+  }, [currentUser, navigate]);
 
   useEffect(() => {
     if (Array.isArray(error) && error.length > 0) {
@@ -31,10 +31,10 @@ const Registration: FC = () => {
   }, [error]);
 
   const reset = (): void => {
-    setDisplayName('');
-    setEmail('');
-    setPassword('');
-    setConfirmPassword('');
+    setDisplayName("");
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
   };
 
   const handleFormSubmit = async (e: FormEvent) => {

@@ -1,25 +1,31 @@
-@import './fonts';
-@import './vars';
-@import './main';
+@import "./fonts";
+@import "./vars";
+@import "./main";
 
 /*COMPONENTS*/
-@import '../../components/Header/Header';
-@import '../../components/Footer/Footer';
-@import '../../components/Logo/Logo';
-@import '../../components/Directory/Directory';
-@import '../../components/Navigation/Navigation';
-@import '../../components/Registration/Registration';
-@import '../../components/Login/Login';
-@import '../../components/Recovery/Recovery';
-@import '../../components/Error/ErrorList/ErrorList';
+@import "../../components/Header/Header";
+@import "../../components/Footer/Footer";
+@import "../../components/Logo/Logo";
+@import "../../components/Directory/Directory";
+@import "../../components/Navigation/Navigation";
+@import "../../components/Registration/Registration";
+@import "../../components/Login/Login";
+@import "../../components/Recovery/Recovery";
+@import "../../components/Error/ErrorList/ErrorList";
+@import "../../components/Aside/Aside";
+@import "../../components/Table/Table";
 
 /*UI*/
-@import '../../components/UI/Button/Button';
-@import '../../components/UI/Inner/Inner';
-@import '../../components/UI/Input/Input';
+@import "../../components/UI/Button/Button";
+@import "../../components/UI/Inner/Inner";
+@import "../../components/UI/Input/Input";
+@import "../../components/UI/Modal/Modal";
+@import "../../components/UI/Select/Select";
+@import "../../components/UI/Title/Title";
 
 /*PAGES*/
-@import '../../pages/HomePage/HomePage';
-@import '../../pages/RegistrationPage/RegistrationPage';
-@import '../../pages/LoginPage/LoginPage';
-@import '../../pages/RecoveryPage/RecoveryPage';
+@import "../../pages/HomePage/HomePage";
+@import "../../pages/RegistrationPage/RegistrationPage";
+@import "../../pages/LoginPage/LoginPage";
+@import "../../pages/RecoveryPage/RecoveryPage";
+@import "../../pages/AdminPage/AdminPage";

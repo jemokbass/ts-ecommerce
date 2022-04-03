@@ -27,3 +27,7 @@
 .login__link:hover {
   border-bottom: 1px solid transparent;
 }
+
+.login .input {
+  margin: 0 auto 20px;
+}

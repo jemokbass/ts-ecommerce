@@ -1,15 +1,16 @@
-import { FC, ChangeEvent, useState } from 'react';
+import { FC, ChangeEvent, useState } from "react";
 
 interface IInputProps {
   label?: string;
-  type?: 'text' | 'email' | 'password' | 'number';
+  type?: "text" | "email" | "password" | "number";
   value?: string;
   placeholder?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   name?: string;
+  step?: number;
 }
 
-const Input: FC<IInputProps> = ({ label, onChange, type, value, placeholder, name }) => {
+const Input: FC<IInputProps> = ({ label, onChange, type, value, placeholder, name, step }) => {
   const [isActive, setIsActive] = useState(false);
 
   if (value && !isActive) {
@@ -25,14 +26,15 @@ const Input: FC<IInputProps> = ({ label, onChange, type, value, placeholder, nam
   };
 
   return (
-    <label className={`input${isActive ? ' active' : ''}`} onFocus={onFocusHandler} onBlur={onBlurEvent}>
+    <label className={`input${isActive ? " active" : ""}`} onFocus={onFocusHandler} onBlur={onBlurEvent}>
       <span>{label}</span>
       <input
         type={type}
         value={value}
         onChange={onChange}
-        placeholder={isActive ? placeholder : ''}
+        placeholder={isActive ? placeholder : ""}
         name={name}
+        step={step}
       />
     </label>
   );

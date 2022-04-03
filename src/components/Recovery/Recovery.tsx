@@ -1,26 +1,26 @@
-import { FC, useState, ChangeEvent, FormEvent, useEffect } from 'react';
-import Input from '../UI/Input/Input';
-import Button from '../UI/Button/Button';
-import { useHistory } from 'react-router';
-import ErrorList from '../Error/ErrorList/ErrorList';
-import { useActions } from '../../hooks/useActions';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { ROUTES } from '../../utils/routes/routes';
+import { FC, useState, ChangeEvent, FormEvent, useEffect } from "react";
+import Input from "../UI/Input/Input";
+import Button from "../UI/Button/Button";
+import { useNavigate } from "react-router-dom";
+import ErrorList from "../Error/ErrorList/ErrorList";
+import { useActions } from "../../hooks/useActions";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { ROUTES } from "../../utils/routes/routes";
 
 const Recovery: FC = () => {
-  const [email, setEmail] = useState<string>('');
+  const [email, setEmail] = useState<string>("");
   const [errors, setErrors] = useState<string[]>([]);
-  const { push } = useHistory();
+  const navigate = useNavigate();
   const { resetPasswordStart, resetUserState } = useActions();
   const { resetPasswordSuccess, error } = useTypedSelector(state => state.user);
 
   useEffect(() => {
     if (resetPasswordSuccess) {
-      setEmail('');
+      setEmail("");
       resetUserState();
-      push(ROUTES.LOGIN);
+      navigate(ROUTES.LOGIN);
     }
-  }, [resetPasswordSuccess, push, resetUserState]);
+  }, [resetPasswordSuccess, navigate, resetUserState]);
 
   useEffect(() => {
     if (Array.isArray(error) && error.length > 0) {

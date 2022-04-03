@@ -1,14 +1,26 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect } from "react";
 
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
-import Routes from './routes';
-import { useActions } from '../../hooks/useActions';
-import AdminToolbar from '../AdminToolbar/AdminToolbar';
-import WithAdminAuth from '../../hoc/WithAdminAuth';
+import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
+import Routes from "./routes";
+import { useActions } from "../../hooks/useActions";
+import AdminToolbar from "../AdminToolbar/AdminToolbar";
+import WithAdminAuth from "../../hoc/WithAdminAuth";
+import { useLocation } from "react-router-dom";
+import { ROUTES } from "../../utils/routes/routes";
 
 const App: FC = () => {
   const { checkUserSession } = useActions();
+  const { pathname } = useLocation();
+  let mainClass = "main";
+
+  switch (pathname) {
+    case ROUTES.ADMIN:
+      mainClass += " main-aside";
+      break;
+    default:
+      break;
+  }
 
   useEffect(() => {
     checkUserSession();
@@ -20,7 +32,7 @@ const App: FC = () => {
         <AdminToolbar />
       </WithAdminAuth>
       <Header />
-      <main className="main">
+      <main className={mainClass}>
         <Routes />
       </main>
       <Footer />

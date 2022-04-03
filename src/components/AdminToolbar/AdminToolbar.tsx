@@ -1,7 +1,7 @@
-import { FC } from 'react';
-import { NavLink } from 'react-router-dom';
-import { ROUTES } from '../../utils/routes/routes';
-import './AdminToolbar.css';
+import { FC } from "react";
+import { NavLink } from "react-router-dom";
+import { ROUTES } from "../../utils/routes/routes";
+import "./AdminToolbar.css";
 
 const AdminToolbar: FC = () => {
   return (

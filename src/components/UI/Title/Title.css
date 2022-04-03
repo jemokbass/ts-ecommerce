@@ -1,0 +1,29 @@
+.title {
+  margin: 0 0 20px;
+  color: var(--current-color);
+  font-size: 16px;
+}
+
+.title.title-xxl {
+  font-size: 48px;
+}
+
+.title.title-xl {
+  font-size: 32px;
+}
+
+.title.title-md {
+  font-size: 24px;
+}
+
+.title.title-sm {
+  font-size: 18px;
+}
+
+.title.title-xs {
+  font-size: 14px;
+}
+
+.title.title-xxs {
+  font-size: 12px;
+}
