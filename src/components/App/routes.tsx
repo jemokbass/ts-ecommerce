@@ -14,6 +14,7 @@ const Routes: FC = () => {
       <Route path={ROUTES.LOGIN} element={<lazyRoutes.LoginPage />} />
       <Route path={ROUTES.LOGOUT} element={<lazyRoutes.LogoutPage />} />
       <Route path={ROUTES.REGISTRATION} element={<lazyRoutes.SignUpPage />} />
+      <Route path={ROUTES.SEARCH} element={<lazyRoutes.SearchPage />} />
       <Route
         path={ROUTES.DASHBOARD}
         element={
@@ -31,8 +32,7 @@ const Routes: FC = () => {
           </WithAdminAuth>
         }
       />
-
-      <Route path={"*"} element={<div>Error page</div>} />
+      <Route path={"*"} element={<lazyRoutes.ErrorPage />} />
     </>
   );
 

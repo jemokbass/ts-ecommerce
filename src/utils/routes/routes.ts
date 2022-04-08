@@ -1,4 +1,5 @@
 export enum ROUTES {
+  SEARCH = "/search",
   LOGIN = "/login",
   REGISTRATION = "/registration",
   RECOVERY = "/recovery",

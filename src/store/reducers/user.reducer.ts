@@ -1,15 +1,18 @@
-import { IUserState, UserAction, UserActionTypes } from '../../utils/types/user.types';
+import { IUserState, UserAction, UserActionTypes } from "../../utils/types/user.types";
 
 const initialState: IUserState = {
   currentUser: null,
   resetPasswordSuccess: false,
   error: [],
+  loading: true,
 };
 
 export const userReducer = (state = initialState, action: UserAction): IUserState => {
   switch (action.type) {
+    case UserActionTypes.SIGN_IN_START:
+      return { ...state };
     case UserActionTypes.SIGN_IN_SUCCESS:
-      return { ...state, currentUser: action.payload, error: [] };
+      return { ...state, currentUser: action.payload, error: [], loading: false };
     case UserActionTypes.RESET_USER_STATE:
     case UserActionTypes.SIGN_OUT_SUCCESS:
       return { ...state, ...initialState };

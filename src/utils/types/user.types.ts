@@ -22,6 +22,7 @@ export interface ICurrentUser {
 export interface IUserState {
   currentUser: null | ICurrentUser;
   resetPasswordSuccess: boolean;
+  loading: boolean;
   error: any[];
 }
 

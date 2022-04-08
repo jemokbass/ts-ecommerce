@@ -5,13 +5,14 @@ import { ROUTES } from "../utils/routes/routes";
 
 export const useAuth = () => {
   const navigate = useNavigate();
-  const { currentUser } = useTypedSelector(state => state.user);
+  const { currentUser, loading } = useTypedSelector(state => state.user);
 
   useEffect(() => {
-    if (!currentUser) {
+    if (!currentUser && !loading) {
       navigate(ROUTES.LOGIN);
-    } // eslint-disable-next-line
-  }, [currentUser]);
+    }
+    // eslint-disable-next-line
+  }, [currentUser, loading]);
 
   return currentUser;
 };

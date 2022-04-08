@@ -39,6 +39,7 @@ const AdminPage: FC = () => {
 
   useEffect(() => {
     dispatch(fetchProductsStart());
+    // eslint-disable-next-line
   }, []);
 
   const handleSubmit = async (e: FormEvent) => {

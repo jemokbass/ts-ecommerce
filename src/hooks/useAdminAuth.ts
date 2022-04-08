@@ -6,13 +6,13 @@ import { checkUserIsAdmin } from "../utils/index";
 
 export const useAdminAuth = () => {
   const navigate = useNavigate();
-  const { currentUser } = useTypedSelector(state => state.user);
+  const { currentUser, loading } = useTypedSelector(state => state.user);
 
   useEffect(() => {
-    if (!checkUserIsAdmin(currentUser)) {
+    if (!checkUserIsAdmin(currentUser) && !loading) {
       navigate(ROUTES.LOGIN);
     } // eslint-disable-next-line
-  }, [currentUser]);
+  }, [currentUser, loading]);
 
   return checkUserIsAdmin(currentUser);
 };
