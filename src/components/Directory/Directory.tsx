@@ -1,9 +1,9 @@
-import { FC } from 'react';
-import GirlImage from '../../assets/img/girl-in-city.jpg';
-import MenImage from '../../assets/img/men-in-city.jpg';
-import Button from '../UI/Button/Button';
+import { FC } from "react";
+import GirlImage from "../../assets/img/girl-in-city.jpg";
+import MenImage from "../../assets/img/men-in-city.jpg";
+import { Button } from "../UI/Button";
 
-const Directory: FC = () => {
+export const Directory: FC = () => {
   return (
     <div className="directory">
       <div className="directory__column directory__column--girl">
@@ -17,5 +17,3 @@ const Directory: FC = () => {
     </div>
   );
 };
-
-export default Directory;

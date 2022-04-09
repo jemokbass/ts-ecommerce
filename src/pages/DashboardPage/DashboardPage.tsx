@@ -1,7 +1,5 @@
-import { FC } from 'react';
+import { FC } from "react";
 
-const DashboardPage: FC = () => {
+export const DashboardPage: FC = () => {
   return <section className="dashboard-page">You're logged in!'</section>;
 };
-
-export default DashboardPage;

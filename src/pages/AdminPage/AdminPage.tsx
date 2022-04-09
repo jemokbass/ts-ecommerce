@@ -1,19 +1,19 @@
 import { FC, useState, FormEvent, MouseEvent, ChangeEvent, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import Button from "../../components/UI/Button/Button";
-import Input from "../../components/UI/Input/Input";
-import Modal from "../../components/UI/Modal/Modal";
-import Select from "../../components/UI/Select/Select";
-import Title from "../../components/UI/Title/Title";
+import { Button } from "../../components/UI/Button";
+import { Input } from "../../components/UI/Input";
+import { Modal } from "../../components/UI/Modal";
+import { Select } from "../../components/UI/Select";
+import { Title } from "../../components/UI/Title";
 import {
   addProductsStart,
   fetchProductsStart,
   deleteProductsStart,
 } from "../../store/actions/products.actions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import Table from "../../components/Table/Table";
+import { Table } from "../../components/Table";
 
-const AdminPage: FC = () => {
+export const AdminPage: FC = () => {
   const dispatch = useDispatch();
   const { products } = useTypedSelector(state => state.products);
   const [hideModal, setHideModal] = useState(true);
@@ -113,5 +113,3 @@ const AdminPage: FC = () => {
     </section>
   );
 };
-
-export default AdminPage;

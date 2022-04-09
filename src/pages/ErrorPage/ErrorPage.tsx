@@ -1,8 +1,8 @@
 import { FC } from "react";
-import Title from "../../components/UI/Title/Title";
+import { Title } from "../../components/UI/Title";
 import "./ErrorPage.css";
 
-const ErrorPage: FC = () => {
+export const ErrorPage: FC = () => {
   return (
     <section className="error-page">
       <Title type="h2" className="error-page__title">
@@ -11,5 +11,3 @@ const ErrorPage: FC = () => {
     </section>
   );
 };
-
-export default ErrorPage;

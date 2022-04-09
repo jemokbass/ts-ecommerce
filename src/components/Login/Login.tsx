@@ -1,14 +1,14 @@
 import { FC, FormEvent, useState, ChangeEvent, useEffect } from "react";
 
-import Button from "../../components/UI/Button/Button";
-import Input from "../UI/Input/Input";
+import { Button } from "../../components/UI/Button";
+import { Input } from "../UI/Input";
 import { Link } from "react-router-dom";
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../utils/routes/routes";
 
-const Login: FC = () => {
+export const Login: FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const { currentUser } = useTypedSelector(state => state.user);
@@ -63,5 +63,3 @@ const Login: FC = () => {
     </form>
   );
 };
-
-export default Login;

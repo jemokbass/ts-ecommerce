@@ -6,7 +6,7 @@ interface ITableProps {
   className?: string;
 }
 
-const Table: FC<ITableProps> = ({ headers, children, headerStyle, className }) => {
+export const Table: FC<ITableProps> = ({ headers, children, headerStyle, className }) => {
   return (
     <table className={`table${className ? ` ${className}` : ""}`}>
       <thead>
@@ -22,5 +22,3 @@ const Table: FC<ITableProps> = ({ headers, children, headerStyle, className }) =
     </table>
   );
 };
-
-export default Table;

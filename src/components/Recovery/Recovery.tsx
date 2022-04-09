@@ -1,13 +1,13 @@
 import { FC, useState, ChangeEvent, FormEvent, useEffect } from "react";
-import Input from "../UI/Input/Input";
-import Button from "../UI/Button/Button";
+import { Input } from "../UI/Input";
+import { Button } from "../UI/Button";
 import { useNavigate } from "react-router-dom";
-import ErrorList from "../Error/ErrorList/ErrorList";
+import { ErrorList } from "../Error/ErrorList";
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { ROUTES } from "../../utils/routes/routes";
 
-const Recovery: FC = () => {
+export const Recovery: FC = () => {
   const [email, setEmail] = useState<string>("");
   const [errors, setErrors] = useState<string[]>([]);
   const navigate = useNavigate();
@@ -52,5 +52,3 @@ const Recovery: FC = () => {
     </form>
   );
 };
-
-export default Recovery;

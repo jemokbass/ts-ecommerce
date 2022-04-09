@@ -1,12 +1,12 @@
 import { FC, Suspense } from "react";
 import { Route, Routes as Switch } from "react-router-dom";
-import WithAuth from "../../hoc/WithAuth";
+import { WithAuth } from "../../hoc";
 import { ROUTES } from "../../utils/routes/routes";
 import * as lazyRoutes from "./lazyRoutes";
-import WithAdminAuth from "../../hoc/WithAdminAuth";
-import Aside from "../Aside/Aside";
+import { WithAdminAuth } from "../../hoc";
+import { Aside } from "../Aside";
 
-const Routes: FC = () => {
+export const Routes: FC = () => {
   const routes = (
     <>
       <Route path={ROUTES.HOME} element={<lazyRoutes.HomePage />} />
@@ -42,5 +42,3 @@ const Routes: FC = () => {
     </Suspense>
   );
 };
-
-export default Routes;

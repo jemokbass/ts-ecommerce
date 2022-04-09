@@ -63,6 +63,7 @@ export function* onAddProductStart() {
 export function* onDeleteProductStart() {
   yield takeLatest(ProductsActionTypes.DELETE_PRODUCTS_START, deleteProduct);
 }
-export default function* productsSagas() {
+
+export function* productsSagas() {
   yield all([call(onAddProductStart), call(onFetchProductStart), call(onDeleteProductStart)]);
 }

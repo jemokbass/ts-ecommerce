@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../utils/routes/routes";
 import { useActions } from "../../hooks/useActions";
 
-const LogoutPage: FC = () => {
+export const LogoutPage: FC = () => {
   const navigate = useNavigate();
   const { signOutStart } = useActions();
 
@@ -19,5 +19,3 @@ const LogoutPage: FC = () => {
 
   return <section className="logout-page"></section>;
 };
-
-export default LogoutPage;

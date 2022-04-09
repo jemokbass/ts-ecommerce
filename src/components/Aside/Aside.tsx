@@ -4,7 +4,7 @@ import { ReactComponent as PeopleIcon } from "../../assets/img/people.svg";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { ROUTES } from "../../utils/routes/routes";
 
-const Aside: FC = () => {
+export const Aside: FC = () => {
   const { currentUser } = useTypedSelector(state => state.user);
 
   return (
@@ -21,5 +21,3 @@ const Aside: FC = () => {
     </aside>
   );
 };
-
-export default Aside;

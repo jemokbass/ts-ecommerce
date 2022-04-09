@@ -1,7 +1,5 @@
-import { FC } from 'react';
+import { FC } from "react";
 
-const Inner: FC = ({ children }) => {
+export const Inner: FC = ({ children }) => {
   return <div className="inner">{children}</div>;
 };
-
-export default Inner;

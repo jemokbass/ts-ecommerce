@@ -1,13 +1,13 @@
 import { FC, useState, ChangeEvent, FormEvent, useEffect } from "react";
-import Button from "../UI/Button/Button";
-import Input from "../UI/Input/Input";
-import ErrorList from "../Error/ErrorList/ErrorList";
+import { Button } from "../UI/Button";
+import { Input } from "../UI/Input";
+import { ErrorList } from "../Error/ErrorList";
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../utils/routes/routes";
 
-const Registration: FC = () => {
+export const Registration: FC = () => {
   const [displayName, setDisplayName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -85,5 +85,3 @@ const Registration: FC = () => {
     </form>
   );
 };
-
-export default Registration;

@@ -8,7 +8,7 @@ interface ILinks {
   title: string;
 }
 
-const Navigation: FC = () => {
+export const Navigation: FC = () => {
   const { currentUser } = useTypedSelector(state => state.user);
   let links: ILinks[] = [
     { path: ROUTES.HOME, title: "Homepage" },
@@ -35,5 +35,3 @@ const Navigation: FC = () => {
     </nav>
   );
 };
-
-export default Navigation;

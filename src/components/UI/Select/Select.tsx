@@ -9,7 +9,7 @@ interface ISelectProps {
   options: any[];
 }
 
-const Select: FC<ISelectProps> = ({ label, onChange, value, placeholder, name, options }) => {
+export const Select: FC<ISelectProps> = ({ label, onChange, value, placeholder, name, options }) => {
   const [isActive, setIsActive] = useState(false);
 
   if (value && !isActive) {
@@ -43,5 +43,3 @@ const Select: FC<ISelectProps> = ({ label, onChange, value, placeholder, name, o
     </label>
   );
 };
-
-export default Select;

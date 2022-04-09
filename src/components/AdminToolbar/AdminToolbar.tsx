@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { ROUTES } from "../../utils/routes/routes";
 import "./AdminToolbar.css";
 
-const AdminToolbar: FC = () => {
+export const AdminToolbar: FC = () => {
   return (
     <div className="admin-toolbar">
       <ul>
@@ -14,5 +14,3 @@ const AdminToolbar: FC = () => {
     </div>
   );
 };
-
-export default AdminToolbar;

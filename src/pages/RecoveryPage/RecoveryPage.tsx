@@ -1,8 +1,8 @@
-import { FC } from 'react';
-import Recovery from '../../components/Recovery/Recovery';
-import Inner from '../../components/UI/Inner/Inner';
+import { FC } from "react";
+import { Recovery } from "../../components/Recovery";
+import { Inner } from "../../components/UI/Inner";
 
-const RecoveryPage: FC = () => {
+export const RecoveryPage: FC = () => {
   return (
     <section className="recovery-page">
       <Inner>
@@ -12,5 +12,3 @@ const RecoveryPage: FC = () => {
     </section>
   );
 };
-
-export default RecoveryPage;

@@ -5,7 +5,7 @@ interface ITitleProps {
   className?: string;
 }
 
-const Title: FC<ITitleProps> = ({ children, type, className }) => {
+export const Title: FC<ITitleProps> = ({ children, type, className }) => {
   switch (type) {
     case "h1":
       return <h1 className={`title title-xxl${className ? ` ${className}` : ""}`}>{children}</h1>;
@@ -23,5 +23,3 @@ const Title: FC<ITitleProps> = ({ children, type, className }) => {
       return null;
   }
 };
-
-export default Title;

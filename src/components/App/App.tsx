@@ -1,15 +1,15 @@
 import { FC, useEffect } from "react";
 
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
-import Routes from "./routes";
+import { Footer } from "../Footer";
+import { Header } from "../Header";
+import { Routes } from "./routes";
 import { useActions } from "../../hooks/useActions";
-import AdminToolbar from "../AdminToolbar/AdminToolbar";
-import WithAdminAuth from "../../hoc/WithAdminAuth";
+import { AdminToolbar } from "../AdminToolbar";
+import { WithAdminAuth } from "../../hoc";
 import { useLocation } from "react-router-dom";
 import { ROUTES } from "../../utils/routes/routes";
 
-const App: FC = () => {
+export const App: FC = () => {
   const { checkUserSession } = useActions();
   const { pathname } = useLocation();
   let mainClass = "main";
@@ -39,5 +39,3 @@ const App: FC = () => {
     </div>
   );
 };
-
-export default App;

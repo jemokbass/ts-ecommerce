@@ -10,7 +10,7 @@ interface IInputProps {
   step?: number;
 }
 
-const Input: FC<IInputProps> = ({ label, onChange, type, value, placeholder, name, step }) => {
+export const Input: FC<IInputProps> = ({ label, onChange, type, value, placeholder, name, step }) => {
   const [isActive, setIsActive] = useState(false);
 
   if (value && !isActive) {
@@ -39,5 +39,3 @@ const Input: FC<IInputProps> = ({ label, onChange, type, value, placeholder, nam
     </label>
   );
 };
-
-export default Input;

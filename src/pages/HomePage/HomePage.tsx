@@ -1,12 +1,10 @@
-import { FC } from 'react';
-import Directory from '../../components/Directory/Directory';
+import { FC } from "react";
+import { Directory } from "../../components/Directory";
 
-const HomePage: FC = () => {
+export const HomePage: FC = () => {
   return (
     <section className="home-page container">
       <Directory />
     </section>
   );
 };
-
-export default HomePage;
