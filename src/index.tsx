@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./components/App/App";
 import { Provider } from "react-redux";
@@ -16,4 +16,6 @@ const app = (
   </React.StrictMode>
 );
 
-ReactDOM.render(app, document.getElementById("root"));
+const container = document.getElementById("root")!;
+const root = createRoot(container);
+root.render(app);
