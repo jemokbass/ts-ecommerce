@@ -20,6 +20,7 @@ export const handleFetchProducts = () => {
   return new Promise((resolve, reject) => {
     firestore
       .collection("products")
+      .orderBy("createdDate")
       .get()
       .then(result => {
         const productsArray = result.docs.map(doc => ({

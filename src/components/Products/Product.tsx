@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { IProductData } from "../../utils/types/products.types";
+import { Button } from "../UI/Button";
 
 interface Props {
   product: IProductData;
@@ -15,6 +16,7 @@ export const Product: FC<Props> = ({ product }) => {
           {product.productPrice}
           <b>$</b>
         </p>
+        <Button className="product__button">Add to cart</Button>
       </div>
     </div>
   );

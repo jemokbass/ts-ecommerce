@@ -18,7 +18,9 @@ export const Navigation: FC = () => {
 
   if (currentUser) {
     links = [
-      { path: ROUTES.DASHBOARD, title: "Dashboard" },
+      { path: ROUTES.HOME, title: "Homepage" },
+      { path: ROUTES.SEARCH, title: "Search" },
+      { path: ROUTES.DASHBOARD, title: "My account" },
       { path: ROUTES.LOGOUT, title: "Logout" },
     ];
   }
