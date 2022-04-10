@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { fetchProductsStart } from "../../store/actions/products.actions";
 import { Product } from "./Product";
+import "./Products.css";
 
 export const Products: FC = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ export const Products: FC = () => {
           !product.productThumbnail ||
           typeof !product.productPrice === undefined ||
           !product.productName ? null : (
-            <Product product={product} />
+            <Product product={product} key={product.documentID} />
           )
         )
       )}

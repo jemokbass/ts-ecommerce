@@ -6,7 +6,7 @@ import "./SearchPage.css";
 export const SearchPage: FC = () => {
   return (
     <section className="search-page container">
-      <Title type="h1">Products search:</Title>
+      <Title type="h1">Browse products:</Title>
       <Products />
     </section>
   );
