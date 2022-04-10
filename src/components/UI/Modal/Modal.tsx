@@ -1,11 +1,11 @@
 import { FC, MouseEvent } from "react";
 
-interface IModalProps {
+interface Props {
   isOpen: boolean;
   setIsClose: (e: MouseEvent<HTMLElement>) => void;
 }
 
-export const Modal: FC<IModalProps> = ({ children, isOpen, setIsClose }) => {
+export const Modal: FC<Props> = ({ children, isOpen, setIsClose }) => {
   const padding = window.outerWidth - document.body.clientWidth + "px";
 
   if (isOpen) {

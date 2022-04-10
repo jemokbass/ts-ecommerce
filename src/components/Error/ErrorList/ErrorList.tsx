@@ -1,10 +1,10 @@
 import { FC } from "react";
 
-interface IErrorListProps {
+interface Props {
   errors: string[];
 }
 
-export const ErrorList: FC<IErrorListProps> = ({ errors }) => {
+export const ErrorList: FC<Props> = ({ errors }) => {
   return (
     <ul className="error-list">
       {errors.map(err => (

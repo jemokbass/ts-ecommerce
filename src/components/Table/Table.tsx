@@ -1,12 +1,12 @@
 import { FC } from "react";
 
-interface ITableProps {
+interface Props {
   headers: string[];
   headerStyle: {};
   className?: string;
 }
 
-export const Table: FC<ITableProps> = ({ headers, children, headerStyle, className }) => {
+export const Table: FC<Props> = ({ headers, children, headerStyle, className }) => {
   return (
     <table className={`table${className ? ` ${className}` : ""}`}>
       <thead>

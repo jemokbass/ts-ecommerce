@@ -1,6 +1,6 @@
 import { FC, ChangeEvent, useState } from "react";
 
-interface ISelectProps {
+interface Props {
   label?: string;
   value?: string;
   placeholder?: string;
@@ -9,7 +9,7 @@ interface ISelectProps {
   options: any[];
 }
 
-export const Select: FC<ISelectProps> = ({ label, onChange, value, placeholder, name, options }) => {
+export const Select: FC<Props> = ({ label, onChange, value, placeholder, name, options }) => {
   const [isActive, setIsActive] = useState(false);
 
   if (value && !isActive) {

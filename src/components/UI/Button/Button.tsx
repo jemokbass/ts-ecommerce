@@ -1,11 +1,11 @@
 import { FC } from "react";
-interface IButtonProps {
+interface Props {
   type?: "button" | "reset" | "submit";
   className?: string;
   onClick?: () => void;
 }
 
-export const Button: FC<IButtonProps> = ({ children, type, className, onClick }) => {
+export const Button: FC<Props> = ({ children, type, className, onClick }) => {
   return (
     <button className={`button${className ? ` ${className}` : ""}`} type={type} onClick={onClick}>
       {children}

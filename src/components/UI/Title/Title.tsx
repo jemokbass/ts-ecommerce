@@ -1,11 +1,11 @@
 import { FC } from "react";
 
-interface ITitleProps {
+interface Props {
   type: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   className?: string;
 }
 
-export const Title: FC<ITitleProps> = ({ children, type, className }) => {
+export const Title: FC<Props> = ({ children, type, className }) => {
   switch (type) {
     case "h1":
       return <h1 className={`title title-xxl${className ? ` ${className}` : ""}`}>{children}</h1>;

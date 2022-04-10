@@ -1,6 +1,6 @@
 import { FC, ChangeEvent, useState } from "react";
 
-interface IInputProps {
+interface Props {
   label?: string;
   type?: "text" | "email" | "password" | "number";
   value?: string;
@@ -10,7 +10,7 @@ interface IInputProps {
   step?: number;
 }
 
-export const Input: FC<IInputProps> = ({ label, onChange, type, value, placeholder, name, step }) => {
+export const Input: FC<Props> = ({ label, onChange, type, value, placeholder, name, step }) => {
   const [isActive, setIsActive] = useState(false);
 
   if (value && !isActive) {
