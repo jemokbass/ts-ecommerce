@@ -15,6 +15,7 @@ export const Routes: FC = () => {
       <Route path={ROUTES.LOGOUT} element={<lazyRoutes.LogoutPage />} />
       <Route path={ROUTES.REGISTRATION} element={<lazyRoutes.SignUpPage />} />
       <Route path={ROUTES.SEARCH} element={<lazyRoutes.SearchPage />} />
+      <Route path={ROUTES.SEARCH_TYPE} element={<lazyRoutes.SearchPage />} />
       <Route
         path={ROUTES.DASHBOARD}
         element={

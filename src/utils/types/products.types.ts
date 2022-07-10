@@ -6,7 +6,12 @@ export enum ProductsActionTypes {
 }
 
 export type ProductId = string;
+
 export type ProductArray = IProductData[];
+
+export interface IFilters {
+  filterType?: string;
+}
 
 export interface IProductData {
   productCategory: string;
@@ -29,6 +34,12 @@ export interface IAddProductStart {
 
 export interface IFetchProductStart {
   type: ProductsActionTypes.FETCH_PRODUCT_START;
+  payload: IFilters;
+}
+
+export interface IFetchProfuct {
+  type: ProductsActionTypes.FETCH_PRODUCT_START;
+  payload: IFilters;
 }
 
 export interface ISetProduct {

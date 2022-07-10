@@ -1,5 +1,6 @@
 export enum ROUTES {
   SEARCH = "/search",
+  SEARCH_TYPE = "/search/:filterType",
   LOGIN = "/login",
   REGISTRATION = "/registration",
   RECOVERY = "/recovery",

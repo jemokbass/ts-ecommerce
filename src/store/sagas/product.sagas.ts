@@ -12,6 +12,7 @@ import {
 } from "../../utils/helpers/product.heplers";
 import { auth } from "../../utils/firebase/utils.firebase";
 import { setProducts, fetchProductsStart } from "../actions/products.actions";
+import { IFetchProfuct } from "../../utils/types/products.types";
 
 export function* addProduct({
   payload: { productCategory, productName, productPrice, productThumbnail },
@@ -33,9 +34,9 @@ export function* addProduct({
   }
 }
 
-export function* fetchProduct() {
+export function* fetchProduct({ payload: { filterType } }: IFetchProfuct) {
   try {
-    const products: ProductArray = yield handleFetchProducts();
+    const products: ProductArray = yield handleFetchProducts({ filterType: filterType });
 
     yield put(setProducts(products));
   } catch (error) {

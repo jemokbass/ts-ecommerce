@@ -1,4 +1,4 @@
-import { ISetProduct, ProductId, IDeleteProductStart } from "../../utils/types/products.types";
+import { ISetProduct, ProductId, IDeleteProductStart, IFilters } from "../../utils/types/products.types";
 import {
   IProductData,
   IAddProductStart,
@@ -12,8 +12,9 @@ export const addProductsStart = (productData: IProductData): IAddProductStart =>
   payload: productData,
 });
 
-export const fetchProductsStart = (): IFetchProductStart => ({
+export const fetchProductsStart = (filters: IFilters = {}): IFetchProductStart => ({
   type: ProductsActionTypes.FETCH_PRODUCT_START,
+  payload: filters,
 });
 
 export const setProducts = (products: ProductArray): ISetProduct => ({

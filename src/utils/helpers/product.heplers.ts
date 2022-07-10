@@ -1,5 +1,5 @@
 import { firestore } from "../firebase/utils.firebase";
-import { IProductData, ProductId } from "../types/products.types";
+import { IProductData, ProductId, IFilters } from "../types/products.types";
 
 export const handleAddProduct = (product: IProductData) => {
   return new Promise((resolve, reject) => {
@@ -16,11 +16,13 @@ export const handleAddProduct = (product: IProductData) => {
   });
 };
 
-export const handleFetchProducts = () => {
+export const handleFetchProducts = ({ filterType }: IFilters) => {
   return new Promise((resolve, reject) => {
-    firestore
-      .collection("products")
-      .orderBy("createdDate")
+    let ref = firestore.collection("products").orderBy("createdDate");
+
+    if (filterType) ref = ref.where("productCategory", "==", filterType);
+
+    ref
       .get()
       .then(result => {
         const productsArray = result.docs.map(doc => ({

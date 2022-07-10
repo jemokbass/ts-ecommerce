@@ -1,15 +1,31 @@
 import { FC, ChangeEvent, useState } from "react";
 
+interface Option {
+  name: string;
+  value: string;
+}
+
 interface Props {
   label?: string;
   value?: string;
   placeholder?: string;
   onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
   name?: string;
-  options: any[];
+  options: Option[];
+  className?: string;
+  defaultValue?: string;
 }
 
-export const Select: FC<Props> = ({ label, onChange, value, placeholder, name, options }) => {
+export const Select: FC<Props> = ({
+  label,
+  onChange,
+  value,
+  placeholder,
+  name,
+  options,
+  className,
+  defaultValue,
+}) => {
   const [isActive, setIsActive] = useState(false);
 
   if (value && !isActive) {
@@ -25,7 +41,11 @@ export const Select: FC<Props> = ({ label, onChange, value, placeholder, name, o
   };
 
   return (
-    <label className={`select${isActive ? " active" : ""}`} onFocus={onFocusHandler} onBlur={onBlurEvent}>
+    <label
+      className={`select${isActive ? " active" : ""}${className ? ` ${className}` : ""}`}
+      onFocus={onFocusHandler}
+      onBlur={onBlurEvent}
+    >
       <span>{label}</span>
       <select
         placeholder={isActive ? placeholder : ""}
@@ -33,6 +53,7 @@ export const Select: FC<Props> = ({ label, onChange, value, placeholder, name, o
         onChange={onChange}
         name={name}
         key={value}
+        defaultValue={defaultValue}
       >
         {options.map(option => (
           <option key={option.value} value={option.value}>
