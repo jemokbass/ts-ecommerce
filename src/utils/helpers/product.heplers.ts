@@ -16,20 +16,27 @@ export const handleAddProduct = (product: IProductData) => {
   });
 };
 
-export const handleFetchProducts = ({ filterType }: IFilters) => {
+export const handleFetchProducts = ({ filterType, startAfterDoc, persistProducts = [] }: IFilters) => {
   return new Promise((resolve, reject) => {
-    let ref = firestore.collection("products").orderBy("createdDate");
+    const pageSize = 6;
+    let ref = firestore.collection("products").orderBy("createdDate").limit(pageSize);
 
     if (filterType) ref = ref.where("productCategory", "==", filterType);
+    if (startAfterDoc) ref = ref.startAfter(startAfterDoc);
 
     ref
       .get()
       .then(result => {
-        const productsArray = result.docs.map(doc => ({
-          ...doc.data(),
-          documentID: doc.id,
-        }));
-        resolve(productsArray);
+        const totalCount = result.size;
+        const data = [
+          ...persistProducts,
+          ...result.docs.map(doc => ({
+            ...doc.data(),
+            documentID: doc.id,
+          })),
+        ];
+
+        resolve({ data, queryDoc: result.docs[totalCount - 1], isLastPage: totalCount < 1 });
       })
       .catch(err => {
         reject(err);

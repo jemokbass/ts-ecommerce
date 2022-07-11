@@ -1,0 +1,10 @@
+.load-more {
+  max-width: 300px;
+  width: 100%;
+  margin: 30px auto 0;
+  background: rgba(var(--current-color-rgb), 0.8);
+}
+
+.load-more:hover {
+  background: rgba(var(--current-color-rgb), 1);
+}

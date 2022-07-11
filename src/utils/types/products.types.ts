@@ -11,6 +11,8 @@ export type ProductArray = IProductData[];
 
 export interface IFilters {
   filterType?: string;
+  startAfterDoc?: any[];
+  persistProducts?: any[];
 }
 
 export interface IProductData {
@@ -24,7 +26,9 @@ export interface IProductData {
 }
 
 export interface IProductsState {
-  products: IProductData[];
+  data: ProductArray;
+  queryDoc: any[];
+  isLastPage: boolean;
 }
 
 export interface IAddProductStart {
@@ -37,14 +41,14 @@ export interface IFetchProductStart {
   payload: IFilters;
 }
 
-export interface IFetchProfuct {
+export interface IFetchProduct {
   type: ProductsActionTypes.FETCH_PRODUCT_START;
   payload: IFilters;
 }
 
 export interface ISetProduct {
   type: ProductsActionTypes.SET_PRODUCT;
-  payload: ProductArray;
+  payload: IProductsState;
 }
 
 export interface IDeleteProductStart {

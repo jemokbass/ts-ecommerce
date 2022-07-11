@@ -1,4 +1,4 @@
-import { FC, useState, FormEvent, MouseEvent, ChangeEvent, useEffect } from "react";
+import { FC, useState, FormEvent, MouseEvent, ChangeEvent, useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { Button } from "../../components/UI/Button";
 import { Input } from "../../components/UI/Input";
@@ -12,10 +12,12 @@ import {
 } from "../../store/actions/products.actions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { Table } from "../../components/Table";
+import { LoadMore } from "../../components/LoadMore";
+import { useScrollToEnd } from "../../hooks/useScrollToEnd";
 
 export const AdminPage: FC = () => {
   const dispatch = useDispatch();
-  const { products } = useTypedSelector(state => state.products);
+  const { data, queryDoc, isLastPage } = useTypedSelector(state => state.products);
   const [hideModal, setHideModal] = useState(true);
   const [productName, setProductName] = useState("");
   const [productCategory, setProductCategory] = useState("mens");
@@ -37,14 +39,19 @@ export const AdminPage: FC = () => {
   const closeModal = (e: MouseEvent<HTMLElement>) =>
     e.target === e.currentTarget ? setHideModal(true) : null;
 
+  const handleLoadMore = useCallback(() => {
+    dispatch(fetchProductsStart({ startAfterDoc: queryDoc, persistProducts: data }));
+  }, [dispatch, queryDoc, data]);
+
   useEffect(() => {
     dispatch(fetchProductsStart());
-    // eslint-disable-next-line
-  }, []);
+  }, [dispatch]);
 
-  const handleSubmit = async (e: FormEvent) => {
+  useScrollToEnd(handleLoadMore, isLastPage);
+
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    await dispatch(
+    dispatch(
       addProductsStart({
         productCategory,
         productName,
@@ -64,7 +71,7 @@ export const AdminPage: FC = () => {
         headerStyle={{ width: "25%" }}
         className="admin-page__table"
       >
-        {products.map(product => (
+        {data.map(product => (
           <tr key={product.documentID}>
             <td width="25%">
               <img src={product.productThumbnail} alt="product" />
@@ -77,6 +84,7 @@ export const AdminPage: FC = () => {
           </tr>
         ))}
       </Table>
+      {!isLastPage && <LoadMore className="admin-page__more" onLoadMore={handleLoadMore} />}
       <Modal isOpen={!hideModal} setIsClose={closeModal}>
         <Title type="h3">Add new product</Title>
         <form onSubmit={handleSubmit}>

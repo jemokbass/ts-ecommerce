@@ -2,8 +2,8 @@ import { takeLatest, all, call, put } from "redux-saga/effects";
 import {
   ProductsActionTypes,
   IAddProductStart,
-  ProductArray,
   IDeleteProductStart,
+  IProductsState,
 } from "../../utils/types/products.types";
 import {
   handleAddProduct,
@@ -12,7 +12,7 @@ import {
 } from "../../utils/helpers/product.heplers";
 import { auth } from "../../utils/firebase/utils.firebase";
 import { setProducts, fetchProductsStart } from "../actions/products.actions";
-import { IFetchProfuct } from "../../utils/types/products.types";
+import { IFetchProduct } from "../../utils/types/products.types";
 
 export function* addProduct({
   payload: { productCategory, productName, productPrice, productThumbnail },
@@ -34,9 +34,9 @@ export function* addProduct({
   }
 }
 
-export function* fetchProduct({ payload: { filterType } }: IFetchProfuct) {
+export function* fetchProduct({ payload }: IFetchProduct) {
   try {
-    const products: ProductArray = yield handleFetchProducts({ filterType: filterType });
+    const products: IProductsState = yield handleFetchProducts(payload);
 
     yield put(setProducts(products));
   } catch (error) {
