@@ -14,6 +14,7 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { Table } from "../../components/Table";
 import { LoadMore } from "../../components/LoadMore";
 import { useScrollToEnd } from "../../hooks/useScrollToEnd";
+import { CKEditor } from "ckeditor4-react";
 
 export const AdminPage: FC = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ export const AdminPage: FC = () => {
   const [productCategory, setProductCategory] = useState("mens");
   const [productThumbnail, setProductThumbnail] = useState("");
   const [productPrice, setProductPrice] = useState(0);
+  const [productDescription, setProductDescription] = useState("");
   const options = [
     { name: "Mens", value: "mens" },
     { name: "Girls", value: "girls" },
@@ -34,6 +36,7 @@ export const AdminPage: FC = () => {
     setProductCategory("mens");
     setProductThumbnail("");
     setProductPrice(0);
+    setProductDescription("");
   };
 
   const closeModal = (e: MouseEvent<HTMLElement>) =>
@@ -57,6 +60,7 @@ export const AdminPage: FC = () => {
         productName,
         productThumbnail,
         productPrice,
+        productDescription,
       })
     );
     resetForm();
@@ -114,6 +118,10 @@ export const AdminPage: FC = () => {
             onChange={(e: ChangeEvent<HTMLInputElement>) => setProductPrice(Number(e.target.value))}
             value={productPrice.toString()}
             step={0.01}
+          />
+          <CKEditor
+            style={{ margin: "0 0 20px" }}
+            onChange={e => setProductDescription(e.editor.getData())}
           />
           <Button>Add product</Button>
         </form>

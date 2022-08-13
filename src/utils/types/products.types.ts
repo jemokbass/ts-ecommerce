@@ -1,8 +1,10 @@
 export enum ProductsActionTypes {
   ADD_NEW_PRODUCT_START = "ADD_NEW_PRODUCT_START",
-  FETCH_PRODUCT_START = "FETCH_PRODUCT_START",
+  FETCH_PRODUCTS_START = "FETCH_PRODUCTS_START",
+  SET_PRODUCTS = "SET_PRODUCTS",
   SET_PRODUCT = "SET_PRODUCT",
   DELETE_PRODUCTS_START = "DELETE_PRODUCTS_START",
+  FETCH_PRODUCT_START = "FETCH_PRODUCT_START",
 }
 
 export type ProductId = string;
@@ -16,10 +18,11 @@ export interface IFilters {
 }
 
 export interface IProductData {
-  productCategory: string;
-  productName: string;
-  productThumbnail: string;
-  productPrice: number;
+  productCategory?: string;
+  productName?: string;
+  productThumbnail?: string;
+  productPrice?: number;
+  productDescription?: string;
   productAdminUserUID?: string;
   createdDate?: Date;
   documentID?: string;
@@ -29,6 +32,7 @@ export interface IProductsState {
   data: ProductArray;
   queryDoc: any[];
   isLastPage: boolean;
+  product: IProductData;
 }
 
 export interface IAddProductStart {
@@ -36,19 +40,27 @@ export interface IAddProductStart {
   payload: IProductData;
 }
 
+export interface IFetchProductsStart {
+  type: ProductsActionTypes.FETCH_PRODUCTS_START;
+  payload: IFilters;
+}
+
+export interface IFetchProducts {
+  type: ProductsActionTypes.FETCH_PRODUCTS_START;
+  payload: IFilters;
+}
 export interface IFetchProductStart {
   type: ProductsActionTypes.FETCH_PRODUCT_START;
-  payload: IFilters;
+  payload: string;
 }
 
-export interface IFetchProduct {
-  type: ProductsActionTypes.FETCH_PRODUCT_START;
-  payload: IFilters;
+export interface ISetProducts {
+  type: ProductsActionTypes.SET_PRODUCTS;
+  payload: IProductsState;
 }
-
 export interface ISetProduct {
   type: ProductsActionTypes.SET_PRODUCT;
-  payload: IProductsState;
+  payload: IProductData;
 }
 
 export interface IDeleteProductStart {
@@ -56,4 +68,10 @@ export interface IDeleteProductStart {
   payload: ProductId | undefined;
 }
 
-export type ProductsAction = IAddProductStart | IFetchProductStart | ISetProduct | IDeleteProductStart;
+export type ProductsAction =
+  | IAddProductStart
+  | IFetchProductsStart
+  | IFetchProductStart
+  | ISetProducts
+  | IDeleteProductStart
+  | ISetProduct;

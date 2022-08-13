@@ -52,7 +52,11 @@ export const Products: FC = () => {
             !product.productThumbnail ||
             typeof !product.productPrice === undefined ||
             !product.productName ? null : (
-              <Product product={product} key={product.documentID} />
+              <Product
+                link={product.documentID ? `/product/${product.documentID}` : ""}
+                product={product}
+                key={product.documentID}
+              />
             )
           )
         )}

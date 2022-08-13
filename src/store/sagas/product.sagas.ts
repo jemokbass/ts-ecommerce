@@ -4,18 +4,21 @@ import {
   IAddProductStart,
   IDeleteProductStart,
   IProductsState,
+  IFetchProducts,
+  IFetchProductStart,
+  IProductData,
 } from "../../utils/types/products.types";
 import {
   handleAddProduct,
   handleFetchProducts,
   handleDeleteProducts,
+  handleFetchProduct,
 } from "../../utils/helpers/product.heplers";
 import { auth } from "../../utils/firebase/utils.firebase";
-import { setProducts, fetchProductsStart } from "../actions/products.actions";
-import { IFetchProduct } from "../../utils/types/products.types";
+import { setProducts, setProduct, fetchProductsStart } from "../actions/products.actions";
 
 export function* addProduct({
-  payload: { productCategory, productName, productPrice, productThumbnail },
+  payload: { productCategory, productName, productPrice, productThumbnail, productDescription },
 }: IAddProductStart) {
   try {
     const timestamp = new Date();
@@ -25,6 +28,7 @@ export function* addProduct({
       productName,
       productPrice,
       productThumbnail,
+      productDescription,
       productAdminUserUID: auth.currentUser?.uid,
       createdDate: timestamp,
     });
@@ -34,7 +38,7 @@ export function* addProduct({
   }
 }
 
-export function* fetchProduct({ payload }: IFetchProduct) {
+export function* fetchProducts({ payload }: IFetchProducts) {
   try {
     const products: IProductsState = yield handleFetchProducts(payload);
 
@@ -53,8 +57,8 @@ export function* deleteProduct({ payload }: IDeleteProductStart) {
   }
 }
 
-export function* onFetchProductStart() {
-  yield takeLatest(ProductsActionTypes.FETCH_PRODUCT_START, fetchProduct);
+export function* onFetchProductsStart() {
+  yield takeLatest(ProductsActionTypes.FETCH_PRODUCTS_START, fetchProducts);
 }
 
 export function* onAddProductStart() {
@@ -65,6 +69,25 @@ export function* onDeleteProductStart() {
   yield takeLatest(ProductsActionTypes.DELETE_PRODUCTS_START, deleteProduct);
 }
 
+export function* fetchProduct({ payload }: IFetchProductStart) {
+  try {
+    const product: IProductData = yield handleFetchProduct(payload);
+
+    yield put(setProduct(product));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export function* onFetchProductStart() {
+  yield takeLatest(ProductsActionTypes.FETCH_PRODUCT_START, fetchProduct);
+}
+
 export function* productsSagas() {
-  yield all([call(onAddProductStart), call(onFetchProductStart), call(onDeleteProductStart)]);
+  yield all([
+    call(onAddProductStart),
+    call(onFetchProductsStart),
+    call(onDeleteProductStart),
+    call(onFetchProductStart),
+  ]);
 }

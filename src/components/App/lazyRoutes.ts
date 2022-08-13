@@ -8,26 +8,23 @@ const SignUpPage = lazy(() =>
     default: module.RegistrationPage,
   }))
 );
-const LoginPage = lazy(() =>
-  import("../../pages/LoginPage/LoginPage").then(module => ({ default: module.LoginPage }))
-);
+const LoginPage = lazy(() => import("../../pages/LoginPage").then(module => ({ default: module.LoginPage })));
 const LogoutPage = lazy(() =>
-  import("../../pages/LogoutPage/LogoutPage").then(module => ({ default: module.LogoutPage }))
+  import("../../pages/LogoutPage").then(module => ({ default: module.LogoutPage }))
 );
 const RecoveryPage = lazy(() =>
-  import("../../pages/RecoveryPage/RecoveryPage").then(module => ({ default: module.RecoveryPage }))
+  import("../../pages/RecoveryPage").then(module => ({ default: module.RecoveryPage }))
 );
 const DashboardPage = lazy(() =>
-  import("../../pages/DashboardPage/DashboardPage").then(module => ({ default: module.DashboardPage }))
+  import("../../pages/DashboardPage").then(module => ({ default: module.DashboardPage }))
 );
-const AdminPage = lazy(() =>
-  import("../../pages/AdminPage/AdminPage").then(module => ({ default: module.AdminPage }))
-);
+const AdminPage = lazy(() => import("../../pages/AdminPage").then(module => ({ default: module.AdminPage })));
 const SearchPage = lazy(() =>
-  import("../../pages/SearchPage/SearchPage").then(module => ({ default: module.SearchPage }))
+  import("../../pages/SearchPage").then(module => ({ default: module.SearchPage }))
 );
-const ErrorPage = lazy(() =>
-  import("../../pages/ErrorPage/ErrorPage").then(module => ({ default: module.ErrorPage }))
+const ErrorPage = lazy(() => import("../../pages/ErrorPage").then(module => ({ default: module.ErrorPage })));
+const ProductDetailsPage = lazy(() =>
+  import("../../pages/ProductDetailsPage").then(module => ({ default: module.ProductDetailsPage }))
 );
 
 export {
@@ -40,4 +37,5 @@ export {
   AdminPage,
   SearchPage,
   ErrorPage,
+  ProductDetailsPage,
 };

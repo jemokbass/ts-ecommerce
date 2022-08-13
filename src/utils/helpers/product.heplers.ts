@@ -58,3 +58,20 @@ export const handleDeleteProducts = (documentID: ProductId | undefined) => {
       });
   });
 };
+
+export const handleFetchProduct = (id: string) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("products")
+      .doc(`${id}`)
+      .get()
+      .then(result => {
+        if (result.exists) {
+          resolve({ ...result.data() });
+        }
+      })
+      .catch(err => {
+        reject(err);
+      });
+  });
+};
