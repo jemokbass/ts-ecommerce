@@ -26,6 +26,7 @@ export interface IProductData {
   productAdminUserUID?: string;
   createdDate?: Date;
   documentID?: string;
+  quantity?: number;
 }
 
 export interface IProductsState {

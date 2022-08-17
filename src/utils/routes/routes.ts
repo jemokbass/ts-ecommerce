@@ -1,4 +1,5 @@
 export enum ROUTES {
+  CART = "/cart",
   PRODUCT_DETAILS = "/product/:id",
   SEARCH = "/search",
   SEARCH_TYPE = "/search/:filterType",

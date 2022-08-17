@@ -2,6 +2,7 @@ import { FC } from "react";
 import { NavLink } from "react-router-dom";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { ROUTES } from "../../utils/routes/routes";
+import { cartItemsCount } from "../../utils/helpers/cart.helpers";
 
 interface ILinks {
   path: string;
@@ -10,6 +11,8 @@ interface ILinks {
 
 export const Navigation: FC = () => {
   const { currentUser } = useTypedSelector(state => state.user);
+  const { cartItems } = useTypedSelector(state => state.cart);
+  const countItems = cartItemsCount(cartItems);
   let links: ILinks[] = [
     { path: ROUTES.HOME, title: "Homepage" },
     { path: ROUTES.REGISTRATION, title: "Registration" },
@@ -33,6 +36,9 @@ export const Navigation: FC = () => {
             <NavLink to={path}>{title}</NavLink>
           </li>
         ))}
+        <li>
+          <NavLink to={ROUTES.CART}>Cart ({countItems})</NavLink>
+        </li>
       </ul>
     </nav>
   );
