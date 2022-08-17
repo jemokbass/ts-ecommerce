@@ -1,4 +1,4 @@
-import { FC, ChangeEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 interface Props {
   label?: string;
@@ -10,7 +10,7 @@ interface Props {
   step?: number;
 }
 
-export const Input: FC<Props> = ({ label, onChange, type, value, placeholder, name, step }) => {
+export const Input = ({ label, onChange, type, value, placeholder, name, step }: Props) => {
   const [isActive, setIsActive] = useState(false);
 
   if (value && !isActive) {

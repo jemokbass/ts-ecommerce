@@ -1,4 +1,4 @@
-import { FC, ChangeEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 interface Option {
   name: string;
@@ -16,7 +16,7 @@ interface Props {
   defaultValue?: string;
 }
 
-export const Select: FC<Props> = ({
+export const Select = ({
   label,
   onChange,
   value,
@@ -25,7 +25,7 @@ export const Select: FC<Props> = ({
   options,
   className,
   defaultValue,
-}) => {
+}: Props) => {
   const [isActive, setIsActive] = useState(false);
 
   if (value && !isActive) {

@@ -1,7 +1,6 @@
-import { FC } from "react";
 import { Directory } from "../../components/Directory";
 
-export const HomePage: FC = () => {
+export const HomePage = () => {
   return (
     <section className="home-page container">
       <Directory />

@@ -1,5 +1,4 @@
-import { FC, useEffect } from "react";
-
+import { useEffect } from "react";
 import { Footer } from "../Footer";
 import { Header } from "../Header";
 import { Routes } from "./routes";
@@ -9,7 +8,7 @@ import { WithAdminAuth } from "../../hoc";
 import { useLocation } from "react-router-dom";
 import { ROUTES } from "../../utils/routes/routes";
 
-export const App: FC = () => {
+export const App = () => {
   const { checkUserSession } = useActions();
   const { pathname } = useLocation();
   let mainClass = "main";

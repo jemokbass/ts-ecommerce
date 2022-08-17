@@ -1,10 +1,8 @@
-import { FC } from "react";
-
 interface Props {
   errors: string[];
 }
 
-export const ErrorList: FC<Props> = ({ errors }) => {
+export const ErrorList = ({ errors }: Props) => {
   return (
     <ul className="error-list">
       {errors.map(err => (

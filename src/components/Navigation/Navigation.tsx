@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { NavLink } from "react-router-dom";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { ROUTES } from "../../utils/routes/routes";
@@ -9,7 +8,7 @@ interface ILinks {
   title: string;
 }
 
-export const Navigation: FC = () => {
+export const Navigation = () => {
   const { currentUser } = useTypedSelector(state => state.user);
   const { cartItems } = useTypedSelector(state => state.cart);
   const countItems = cartItemsCount(cartItems);

@@ -1,4 +1,4 @@
-import { FC, useState, ChangeEvent, FormEvent, useEffect } from "react";
+import { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { Input } from "../UI/Input";
 import { Button } from "../UI/Button";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +7,7 @@ import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { ROUTES } from "../../utils/routes/routes";
 
-export const Recovery: FC = () => {
+export const Recovery = () => {
   const [email, setEmail] = useState<string>("");
   const [errors, setErrors] = useState<string[]>([]);
   const navigate = useNavigate();

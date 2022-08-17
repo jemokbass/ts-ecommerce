@@ -1,5 +1,3 @@
-import { FC } from "react";
-
-export const DashboardPage: FC = () => {
+export const DashboardPage = () => {
   return <section className="dashboard-page">You're logged in!'</section>;
 };

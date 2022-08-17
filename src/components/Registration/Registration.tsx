@@ -1,4 +1,4 @@
-import { FC, useState, ChangeEvent, FormEvent, useEffect } from "react";
+import { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { Button } from "../UI/Button";
 import { Input } from "../UI/Input";
 import { ErrorList } from "../Error/ErrorList";
@@ -7,7 +7,7 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../utils/routes/routes";
 
-export const Registration: FC = () => {
+export const Registration = () => {
   const [displayName, setDisplayName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");

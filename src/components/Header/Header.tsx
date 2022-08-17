@@ -1,8 +1,7 @@
-import { FC } from "react";
 import { Logo } from "../Logo";
 import { Navigation } from "../Navigation";
 
-export const Header: FC = () => {
+export const Header = () => {
   return (
     <header className="header">
       <Logo />

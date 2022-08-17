@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useCallback, useEffect } from "react";
+import { ChangeEvent, useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { useScrollToEnd } from "../../hooks/useScrollToEnd";
@@ -9,7 +9,7 @@ import { Select } from "../UI/Select";
 import { Product } from "./Product";
 import "./Products.css";
 
-export const Products: FC = () => {
+export const Products = () => {
   const navigate = useNavigate();
   const { filterType } = useParams();
   const dispatch = useDispatch();

@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart } from "../../store/actions/cart.actions";
@@ -10,7 +9,7 @@ interface Props {
   link: string;
 }
 
-export const Product: FC<Props> = ({ product, link }) => {
+export const Product = ({ product, link }: Props) => {
   const { productThumbnail, productName, productPrice } = product;
   const dispatch = useDispatch();
 

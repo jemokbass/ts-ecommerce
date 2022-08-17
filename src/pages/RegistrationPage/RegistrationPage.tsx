@@ -1,8 +1,7 @@
-import { FC } from "react";
 import { Registration } from "../../components/Registration";
 import { Inner } from "../../components/UI/Inner";
 
-export const RegistrationPage: FC = () => {
+export const RegistrationPage = () => {
   return (
     <section className="registration-page">
       <Inner>

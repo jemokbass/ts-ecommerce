@@ -1,4 +1,4 @@
-import { FC, useState, FormEvent, MouseEvent, ChangeEvent, useEffect, useCallback } from "react";
+import { useState, FormEvent, MouseEvent, ChangeEvent, useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { Button } from "../../components/UI/Button";
 import { Input } from "../../components/UI/Input";
@@ -16,7 +16,7 @@ import { LoadMore } from "../../components/LoadMore";
 import { useScrollToEnd } from "../../hooks/useScrollToEnd";
 import { CKEditor } from "ckeditor4-react";
 
-export const AdminPage: FC = () => {
+export const AdminPage = () => {
   const dispatch = useDispatch();
   const { data, queryDoc, isLastPage } = useTypedSelector(state => state.products);
   const [hideModal, setHideModal] = useState(true);

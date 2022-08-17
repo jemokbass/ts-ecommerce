@@ -1,9 +1,8 @@
-import { FC } from "react";
 import { NavLink } from "react-router-dom";
 import { ROUTES } from "../../utils/routes/routes";
 import "./AdminToolbar.css";
 
-export const AdminToolbar: FC = () => {
+export const AdminToolbar = () => {
   return (
     <div className="admin-toolbar">
       <ul>

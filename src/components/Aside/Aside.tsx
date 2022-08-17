@@ -1,10 +1,9 @@
-import { FC } from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as PeopleIcon } from "../../assets/img/people.svg";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { ROUTES } from "../../utils/routes/routes";
 
-export const Aside: FC = () => {
+export const Aside = () => {
   const { currentUser } = useTypedSelector(state => state.user);
 
   return (

@@ -1,5 +1,4 @@
-import { FC, FormEvent, useState, ChangeEvent, useEffect } from "react";
-
+import { FormEvent, useState, ChangeEvent, useEffect } from "react";
 import { Button } from "../../components/UI/Button";
 import { Input } from "../UI/Input";
 import { Link } from "react-router-dom";
@@ -8,7 +7,7 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../utils/routes/routes";
 
-export const Login: FC = () => {
+export const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const { currentUser } = useTypedSelector(state => state.user);

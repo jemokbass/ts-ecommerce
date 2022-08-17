@@ -1,5 +1,3 @@
-import { FC } from "react";
-
-export const Search: FC = () => {
+export const Search = () => {
   return <div className="Search"></div>;
 };

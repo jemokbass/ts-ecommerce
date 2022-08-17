@@ -1,9 +1,9 @@
-import { FC, useCallback, useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../utils/routes/routes";
 import { useActions } from "../../hooks/useActions";
 
-export const LogoutPage: FC = () => {
+export const LogoutPage = () => {
   const navigate = useNavigate();
   const { signOutStart } = useActions();
 

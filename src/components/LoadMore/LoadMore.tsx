@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { Button } from "../UI/Button";
 import "./LoadMore.css";
 
@@ -7,7 +6,7 @@ interface Props {
   className?: string;
 }
 
-export const LoadMore: FC<Props> = ({ onLoadMore, className }) => {
+export const LoadMore = ({ onLoadMore, className }: Props) => {
   return (
     <Button onClick={onLoadMore} className={`load-more${className ? ` ${className}` : ""}`}>
       Load More

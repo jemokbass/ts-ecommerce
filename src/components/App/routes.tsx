@@ -9,6 +9,7 @@ import { Aside } from "../Aside";
 export const Routes: FC = () => {
   const routes = (
     <>
+      <Route path={ROUTES.CART} element={<lazyRoutes.CartPage />} />
       <Route path={ROUTES.HOME} element={<lazyRoutes.HomePage />} />
       <Route path={ROUTES.RECOVERY} element={<lazyRoutes.RecoveryPage />} />
       <Route path={ROUTES.LOGIN} element={<lazyRoutes.LoginPage />} />

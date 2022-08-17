@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
@@ -8,7 +8,7 @@ import { IProductData } from "../../utils/types/products.types";
 import { Button } from "../UI/Button";
 import "./ProductDetails.css";
 
-export const ProductDetails: FC = () => {
+export const ProductDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { product } = useTypedSelector(state => state.products);

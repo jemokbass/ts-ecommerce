@@ -1,9 +1,7 @@
-import { FC } from "react";
-
 import { Login } from "../../components/Login";
 import { Inner } from "../../components/UI/Inner";
 
-export const LoginPage: FC = () => {
+export const LoginPage = () => {
   return (
     <section className="login-page">
       <Inner>
