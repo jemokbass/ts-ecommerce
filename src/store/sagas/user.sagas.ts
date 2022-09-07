@@ -9,6 +9,8 @@ import {
 import { auth, handleUserProfile, getCurrentUser, GoogleProvider } from "../../utils/firebase/utils.firebase";
 import { signInSuccess, signOutSuccess, userError, resetPasswordSuccess } from "../actions/user.actions";
 import { handleResetPasswordAPI } from "../../utils/helpers/user.helpers";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { getDoc } from "firebase/firestore";
 
 export function* getSnapshotFromUserAuth(
   user: Promise<ICurrentUser | null | {}>,
@@ -19,7 +21,7 @@ export function* getSnapshotFromUserAuth(
       userAuth: user,
       additionalData,
     });
-    const snapshot = yield userRef.get();
+    const snapshot = yield getDoc(userRef);
 
     yield put(
       signInSuccess({
@@ -32,7 +34,7 @@ export function* getSnapshotFromUserAuth(
 
 export function* signIn({ payload: { email, password } }: ISignInStart) {
   try {
-    const { user } = yield auth.signInWithEmailAndPassword(email, password);
+    const { user } = yield signInWithEmailAndPassword(auth, email, password);
 
     yield getSnapshotFromUserAuth(user);
   } catch (error) {
@@ -80,7 +82,7 @@ export function* signUp({ payload: { displayName, email, password, confirmPasswo
   }
 
   try {
-    const { user } = yield auth.createUserWithEmailAndPassword(email, password);
+    const { user } = yield createUserWithEmailAndPassword(auth, email, password);
     const additionalData = { displayName };
 
     yield getSnapshotFromUserAuth(user, additionalData);
@@ -108,7 +110,7 @@ export function* onResetPassword() {
 
 export function* googleSignIn() {
   try {
-    const { user } = yield auth.signInWithPopup(GoogleProvider);
+    const { user } = yield signInWithPopup(auth, GoogleProvider);
 
     yield getSnapshotFromUserAuth(user);
   } catch (error) {

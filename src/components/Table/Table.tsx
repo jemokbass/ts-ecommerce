@@ -1,12 +1,13 @@
-import { FC } from "react";
+import { ReactNode } from "react";
 
 interface Props {
   headers: string[];
   headerStyle: {};
   className?: string;
+  children: ReactNode;
 }
 
-export const Table: FC<Props> = ({ headers, children, headerStyle, className }) => {
+export const Table = ({ headers, children, headerStyle, className }: Props) => {
   return (
     <table className={`table${className ? ` ${className}` : ""}`}>
       <thead>

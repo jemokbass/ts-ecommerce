@@ -1,11 +1,12 @@
-import { FC } from "react";
+import { ReactNode } from "react";
 
 interface Props {
   type: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   className?: string;
+  children: ReactNode;
 }
 
-export const Title: FC<Props> = ({ children, type, className }) => {
+export const Title = ({ children, type, className }: Props) => {
   switch (type) {
     case "h1":
       return <h1 className={`title title-xxl${className ? ` ${className}` : ""}`}>{children}</h1>;

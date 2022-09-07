@@ -1,5 +1,9 @@
-import { FC } from "react";
+import { ReactNode } from "react";
 
-export const Inner: FC = ({ children }) => {
+interface Props {
+  children: ReactNode;
+}
+
+export const Inner = ({ children }: Props) => {
   return <div className="inner">{children}</div>;
 };

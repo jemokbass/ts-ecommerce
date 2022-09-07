@@ -7,6 +7,8 @@ import { AdminToolbar } from "../AdminToolbar";
 import { WithAdminAuth } from "../../hoc";
 import { useLocation } from "react-router-dom";
 import { ROUTES } from "../../utils/routes/routes";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 export const App = () => {
   const { checkUserSession } = useActions();
@@ -35,6 +37,7 @@ export const App = () => {
         <Routes />
       </main>
       <Footer />
+      <ToastContainer autoClose={5000} closeOnClick pauseOnFocusLoss position="bottom-right" />
     </div>
   );
 };

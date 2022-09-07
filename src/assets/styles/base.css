@@ -14,6 +14,7 @@
 @import "../../components/Error/ErrorList/ErrorList";
 @import "../../components/Aside/Aside";
 @import "../../components/Table/Table";
+@import "../../components/Checkout/Checkout";
 
 /*UI*/
 @import "../../components/UI/Button/Button";

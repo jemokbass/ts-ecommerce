@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { addToCart } from "../../store/actions/cart.actions";
 import { fetchProductStart, setProduct } from "../../store/actions/products.actions";
@@ -17,7 +18,10 @@ export const ProductDetails = () => {
   const addToCartHandler = (data: IProductData) => {
     if (!data) return;
 
-    dispatch(addToCart(data));
+    try {
+      dispatch(addToCart(data));
+      toast(`${data.productName} was added.`);
+    } catch (error) {}
   };
 
   useEffect(() => {

@@ -1,30 +1,30 @@
-import firebase from "firebase/app";
-import "firebase/firestore";
-import "firebase/auth";
+import { initializeApp } from "firebase/app";
+import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { firebaseConfig } from "./config.firebase";
 import { ICurrentUser } from "../types/user.types";
 
-firebase.initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
+export const auth = getAuth();
+export const firestore = getFirestore();
 
-export const GoogleProvider = new firebase.auth.GoogleAuthProvider();
+export const GoogleProvider = new GoogleAuthProvider();
 GoogleProvider.setCustomParameters({ prompt: "select_account" });
 
 export const handleUserProfile = async ({ userAuth, additionalData }: any) => {
   if (!userAuth) return;
   const { uid } = userAuth;
-  const userRef = firestore.doc(`users/${uid}`);
-  const snapshot = await userRef.get();
+  const userRef = doc(firestore, `users/${uid}`);
+  const snapshot = await getDoc(userRef);
 
-  if (!snapshot.exists) {
+  if (!snapshot.exists()) {
     const { displayName, email } = userAuth;
     const timestamp = new Date();
     const userRoles = ["user"];
 
     try {
-      await userRef.set({
+      await setDoc(userRef, {
         displayName,
         email,
         createdDate: timestamp,
@@ -41,7 +41,7 @@ export const handleUserProfile = async ({ userAuth, additionalData }: any) => {
 
 export const getCurrentUser = (): Promise<ICurrentUser | null | {}> => {
   return new Promise((resolve, reject) => {
-    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+    const unsubscribe = auth.onAuthStateChanged(userAuth => {
       unsubscribe();
       resolve(userAuth);
     }, reject);

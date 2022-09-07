@@ -34,3 +34,33 @@ export const handleAddToCart = ({
 
 export const cartItemsCount = (data: CartItem[]) =>
   data.reduce((quantity, cartItem) => (cartItem.quantity ? quantity + cartItem.quantity : quantity), 0);
+
+export const handleRemoveCartItem = ({
+  prevCartItems,
+  nextCartItem,
+}: {
+  prevCartItems: CartItem[];
+  nextCartItem: CartItem;
+}) => {
+  return prevCartItems.filter(item => item.documentID !== nextCartItem.documentID);
+};
+
+export const handleReduceCartItem = ({
+  prevCartItems,
+  reduceCartItem,
+}: {
+  prevCartItems: CartItem[];
+  reduceCartItem: CartItem;
+}) => {
+  const existItem = prevCartItems.find(item => item.documentID === reduceCartItem.documentID);
+
+  if (existItem?.quantity === 1) {
+    return prevCartItems.filter(item => item.documentID !== existItem.documentID);
+  }
+
+  return prevCartItems.map(item =>
+    item.documentID === existItem?.documentID
+      ? { ...item, ...(item.quantity && { quantity: item.quantity - 1 }) }
+      : item
+  );
+};

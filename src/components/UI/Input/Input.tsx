@@ -35,6 +35,7 @@ export const Input = ({ label, onChange, type, value, placeholder, name, step }:
         placeholder={isActive ? placeholder : ""}
         name={name}
         step={step}
+        autoComplete={type}
       />
     </label>
   );

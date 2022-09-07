@@ -49,9 +49,7 @@ export const Products = () => {
           <p>No search results</p>
         ) : (
           data.map(product =>
-            !product.productThumbnail ||
-            typeof !product.productPrice === undefined ||
-            !product.productName ? null : (
+            !product.productThumbnail || !product.productName ? null : (
               <Product
                 link={product.documentID ? `/product/${product.documentID}` : ""}
                 product={product}

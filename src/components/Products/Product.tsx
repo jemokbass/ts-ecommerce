@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { addToCart } from "../../store/actions/cart.actions";
 import { IProductData } from "../../utils/types/products.types";
 import { Button } from "../UI/Button";
@@ -16,7 +17,10 @@ export const Product = ({ product, link }: Props) => {
   const addToCartHandler = (data: IProductData) => {
     if (!data) return;
 
-    dispatch(addToCart(data));
+    try {
+      dispatch(addToCart(data));
+      toast(`${data.productName} was added.`);
+    } catch (error) {}
   };
 
   return (

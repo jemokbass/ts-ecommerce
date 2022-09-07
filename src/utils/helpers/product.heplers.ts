@@ -1,12 +1,25 @@
 import { firestore } from "../firebase/utils.firebase";
 import { IProductData, ProductId, IFilters } from "../types/products.types";
+import {
+  collection,
+  getDocs,
+  getDoc,
+  doc,
+  setDoc,
+  orderBy,
+  limit,
+  query,
+  where,
+  startAfter,
+  deleteDoc,
+} from "firebase/firestore";
 
 export const handleAddProduct = (product: IProductData) => {
   return new Promise((resolve, reject) => {
-    firestore
-      .collection("products")
-      .doc()
-      .set(product)
+    const collect = collection(firestore, "products");
+    const collectDoc = doc(collect);
+
+    setDoc(collectDoc, product)
       .then(result => {
         resolve(result);
       })
@@ -19,13 +32,12 @@ export const handleAddProduct = (product: IProductData) => {
 export const handleFetchProducts = ({ filterType, startAfterDoc, persistProducts = [] }: IFilters) => {
   return new Promise((resolve, reject) => {
     const pageSize = 6;
-    let ref = firestore.collection("products").orderBy("createdDate").limit(pageSize);
+    let ref = query(collection(firestore, "products"), orderBy("createdDate"), limit(pageSize));
 
-    if (filterType) ref = ref.where("productCategory", "==", filterType);
-    if (startAfterDoc) ref = ref.startAfter(startAfterDoc);
+    if (filterType) ref = query(ref, where("productCategory", "==", filterType));
+    if (startAfterDoc) ref = query(ref, startAfter(startAfterDoc));
 
-    ref
-      .get()
+    getDocs(ref)
       .then(result => {
         const totalCount = result.size;
         const data = [
@@ -46,10 +58,10 @@ export const handleFetchProducts = ({ filterType, startAfterDoc, persistProducts
 
 export const handleDeleteProducts = (documentID: ProductId | undefined) => {
   return new Promise<void>((resolve, reject) => {
-    firestore
-      .collection("products")
-      .doc(documentID)
-      .delete()
+    const collect = collection(firestore, "products");
+    const newDoc = doc(collect, documentID);
+
+    deleteDoc(newDoc)
       .then(result => {
         resolve();
       })
@@ -61,12 +73,12 @@ export const handleDeleteProducts = (documentID: ProductId | undefined) => {
 
 export const handleFetchProduct = (id: string) => {
   return new Promise((resolve, reject) => {
-    firestore
-      .collection("products")
-      .doc(`${id}`)
-      .get()
+    const collect = collection(firestore, "products");
+    const newDoc = doc(collect, id);
+
+    getDoc(newDoc)
       .then(result => {
-        if (result.exists) {
+        if (result.exists()) {
           resolve({ ...result.data() });
         }
       })
