@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { cn } from "../../../utils/index";
 interface Props {
   type?: "button" | "reset" | "submit";
   className?: string;
@@ -11,11 +12,11 @@ interface Props {
 
 export const Button = ({ children, type, className, onClick, isLink, to }: Props) => {
   return isLink ? (
-    <Link className={`button${className ? ` ${className}` : ""}`} to={to ? to : "/"}>
+    <Link className={cn("button", className)} to={to ? to : "/"}>
       {children}
     </Link>
   ) : (
-    <button className={`button${className ? ` ${className}` : ""}`} type={type} onClick={onClick}>
+    <button className={cn("button", className)} type={type} onClick={onClick}>
       {children}
     </button>
   );

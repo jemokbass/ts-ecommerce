@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { cn } from "../../utils/index";
 
 interface Props {
   headers: string[];
@@ -9,7 +10,7 @@ interface Props {
 
 export const Table = ({ headers, children, headerStyle, className }: Props) => {
   return (
-    <table className={`table${className ? ` ${className}` : ""}`}>
+    <table className={cn("table", className)}>
       <thead>
         <tr>
           {headers.map(header => (

@@ -15,6 +15,7 @@
 @import "../../components/Aside/Aside";
 @import "../../components/Table/Table";
 @import "../../components/Checkout/Checkout";
+@import "../../components/PaymentDetails/PaymentDetails";
 
 /*UI*/
 @import "../../components/UI/Button/Button";
@@ -23,6 +24,7 @@
 @import "../../components/UI/Modal/Modal";
 @import "../../components/UI/Select/Select";
 @import "../../components/UI/Title/Title";
+@import "../../components/UI/FormGroup/FormGroup";
 
 /*PAGES*/
 @import "../../pages/HomePage/HomePage";

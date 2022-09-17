@@ -1,6 +1,7 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, HTMLProps, useState } from "react";
+import { cn } from "../../../utils/index";
 
-interface Props {
+interface Props extends HTMLProps<HTMLInputElement> {
   label?: string;
   type?: "text" | "email" | "password" | "number";
   value?: string;
@@ -8,9 +9,19 @@ interface Props {
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   name?: string;
   step?: number;
+  className?: string;
 }
 
-export const Input = ({ label, onChange, type, value, placeholder, name, step }: Props) => {
+export const Input = ({
+  label,
+  type = "text",
+  value,
+  placeholder,
+  step,
+  className,
+  onChange,
+  ...props
+}: Props) => {
   const [isActive, setIsActive] = useState(false);
 
   if (value && !isActive) {
@@ -26,16 +37,20 @@ export const Input = ({ label, onChange, type, value, placeholder, name, step }:
   };
 
   return (
-    <label className={`input${isActive ? " active" : ""}`} onFocus={onFocusHandler} onBlur={onBlurEvent}>
+    <label
+      className={cn("input", isActive && "active", className)}
+      onFocus={onFocusHandler}
+      onBlur={onBlurEvent}
+    >
       <span>{label}</span>
       <input
         type={type}
         value={value}
-        onChange={onChange}
         placeholder={isActive ? placeholder : ""}
-        name={name}
         step={step}
         autoComplete={type}
+        onChange={onChange}
+        {...props}
       />
     </label>
   );

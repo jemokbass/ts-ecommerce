@@ -1,0 +1,15 @@
+.payment-details.inner {
+  margin: 40px auto 0;
+}
+
+.payment-details__select {
+  max-width: 50%;
+  width: 100%;
+  margin: 0 0 30px;
+  padding: 5px 0;
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--current-color);
+  outline: none;
+}

@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from "react";
+import { cn } from "../../../utils/index";
 
 interface Option {
   name: string;
@@ -42,7 +43,7 @@ export const Select = ({
 
   return (
     <label
-      className={`select${isActive ? " active" : ""}${className ? ` ${className}` : ""}`}
+      className={cn("select", isActive && "active", className)}
       onFocus={onFocusHandler}
       onBlur={onBlurEvent}
     >

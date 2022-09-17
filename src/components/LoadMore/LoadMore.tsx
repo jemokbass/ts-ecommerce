@@ -1,5 +1,6 @@
 import { Button } from "../UI/Button";
 import "./LoadMore.css";
+import { cn } from "../../utils/index";
 
 interface Props {
   onLoadMore: () => void;
@@ -8,7 +9,7 @@ interface Props {
 
 export const LoadMore = ({ onLoadMore, className }: Props) => {
   return (
-    <Button onClick={onLoadMore} className={`load-more${className ? ` ${className}` : ""}`}>
+    <Button onClick={onLoadMore} className={cn("load-more", className)}>
       Load More
     </Button>
   );

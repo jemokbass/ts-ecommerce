@@ -1,4 +1,5 @@
 export enum ROUTES {
+  PAYMENT = "/payment",
   CART = "/cart",
   PRODUCT_DETAILS = "/product/:id",
   SEARCH = "/search",

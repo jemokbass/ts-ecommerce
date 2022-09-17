@@ -27,6 +27,9 @@ const ProductDetailsPage = lazy(() =>
   import("../../pages/ProductDetailsPage").then(module => ({ default: module.ProductDetailsPage }))
 );
 const CartPage = lazy(() => import("../../pages/CartPage").then(module => ({ default: module.CartPage })));
+const PaymentPage = lazy(() =>
+  import("../../pages/PaymentPage").then(module => ({ default: module.PaymentPage }))
+);
 
 export {
   HomePage,
@@ -40,4 +43,5 @@ export {
   ErrorPage,
   ProductDetailsPage,
   CartPage,
+  PaymentPage,
 };

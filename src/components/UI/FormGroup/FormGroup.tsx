@@ -6,6 +6,6 @@ interface Props {
   className?: string;
 }
 
-export const Inner = ({ children, className }: Props) => {
-  return <div className={cn("inner", className)}>{children}</div>;
+export const FormGroup = ({ children, className }: Props) => {
+  return <fieldset className={cn("form-group", className)}>{children}</fieldset>;
 };
