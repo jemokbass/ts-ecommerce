@@ -1,0 +1,40 @@
+.aside {
+  min-width: 150px;
+  min-height: 100%;
+  border-right: 2px solid var(--current-color);
+}
+
+.aside__profile {
+  padding: 20px 0;
+  border-bottom: 2px solid var(--current-color);
+  box-shadow: inset 2px 0 4px 1px var(--current-color);
+}
+
+.aside__profile-icon {
+  margin: 0 0 10px;
+  text-align: center;
+}
+
+.aside__profile-icon svg {
+  width: 45px;
+  height: 45px;
+}
+
+.aside__profile-name {
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.aside__link {
+  display: block;
+  padding: 10px 5px;
+  font-size: 18px;
+  border-bottom: 2px solid var(--current-color);
+  transition: all 0.5s ease 0s;
+}
+
+.aside__link:hover {
+  color: var(--current-color);
+}

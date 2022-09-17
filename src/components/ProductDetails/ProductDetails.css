@@ -1,0 +1,34 @@
+.product-details {
+  padding: 100px 0;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-details__img {
+  max-height: 350px;
+  margin: 0 0 20px;
+  object-fit: contain;
+}
+
+.product-details__title {
+  width: 100%;
+  margin: 0 0 10px;
+  text-align: center;
+  font-size: 45px;
+}
+
+.product-details__price {
+  width: 100%;
+  margin: 0 0 30px;
+  text-align: right;
+  font-weight: 500;
+  font-size: 25px;
+}
+
+.product-details__button {
+  width: 100%;
+  margin: 0 0 20px;
+}

@@ -1,0 +1,27 @@
+.navigation {
+  color: var(--white);
+}
+
+.navigation__list {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navigation__list-item {
+}
+
+.navigation__list-item a {
+  letter-spacing: 1.1px;
+  transition: all 0.3s ease 0s;
+}
+
+.navigation__list-item a:hover {
+  opacity: 0.7;
+}
+
+.navigation__list-item .active {
+  font-style: italic;
+  font-weight: 800;
+  letter-spacing: 0.1px;
+}

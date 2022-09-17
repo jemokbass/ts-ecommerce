@@ -1,0 +1,116 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font);
+  font-size: var(--main-size);
+  color: var(--black);
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  max-width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-y: scroll;
+  transition: height 0.3s ease 0s;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+body,
+input,
+button,
+textarea,
+a,
+ul,
+ol,
+li {
+  font-family: var(--font);
+  font-weight: 400;
+  color: var(--black);
+  background: transparent;
+  font-size: var(--main-size);
+  line-height: 1.1;
+  letter-spacing: 0.1em;
+  background: none;
+  border: none;
+  text-decoration: none;
+  list-style: none;
+}
+
+input,
+button,
+textarea,
+a,
+ul,
+li,
+p,
+blockquote {
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+
+input,
+button,
+textarea,
+a,
+label {
+  outline: none;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.main {
+  flex: 1 0 100%;
+  padding: 0 0 30px;
+  background: var(--gray-color);
+}
+
+.main-aside {
+  display: flex;
+  padding: 0;
+}

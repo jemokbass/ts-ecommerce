@@ -1,0 +1,9 @@
+.error-list {
+  max-width: 370px;
+  margin: 0 auto 20px;
+}
+
+.error-list__item {
+  margin: 0 0 5px;
+  color: var(--red-color);
+}

@@ -1,0 +1,25 @@
+.select {
+  display: block;
+  max-width: 50%;
+  margin: 0 0 30px;
+  cursor: pointer;
+}
+
+.select span {
+  display: block;
+  margin: 0 0 5px;
+  transition: all 0.2s ease-in 0s;
+}
+
+.select select {
+  display: block;
+  min-width: 100%;
+  width: 100%;
+  padding: 2px 2px 3px;
+  border: 2px solid var(--current-color);
+  border-radius: 5px;
+  outline: none;
+}
+
+.select.active select {
+}

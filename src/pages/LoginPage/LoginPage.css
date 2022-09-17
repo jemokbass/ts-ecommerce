@@ -1,0 +1,11 @@
+.login-page {
+  min-height: 100%;
+  padding: 50px 0 0;
+}
+
+.login-page__title {
+  margin: 0 0 30px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 800;
+}
