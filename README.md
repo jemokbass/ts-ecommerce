@@ -18,10 +18,6 @@ redux-saga
 redux-persis
 and other
 
-## Development in develop branch
-
-Project was not on the completed because became necessary to pay for firebase functions.
-Firebase functions are necessary for binding NextJs, Stripe and GraphQl. :(
 
 ## Available Scripts
 
